@@ -28,12 +28,12 @@ public class ProdutoUseCases {
         return produto;
     }
 
-    public List<Produto> consultaTodos(String categoriaProduto) { //todo verificar
+    public List<Produto> consultaTodos(String categoriaProduto) {
         return repositorio.consultaTodosProdutos(CategoriaProdutoEnum.paraEnum(categoriaProduto));
     }
 
 
-    public List<Produto> consultaPorCategoria(CategoriaProdutoEnum categoriaProduto) { //todo verificar
+    public List<Produto> consultaPorCategoria(CategoriaProdutoEnum categoriaProduto) {
         return repositorio.consultaProdutosPorCategoria(categoriaProduto);
     }
 

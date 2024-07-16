@@ -4,71 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b9c264cc-45c0-448f-bb9a-991d3215a24a" name="Changes" comment="Clone do projeto da fase 1">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/postech/domain/utils/ValidacaoUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/postech/infra/dto/response/CheckoutResponseDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/postech/infra/mappers/ProdutoMapper.java" afterDir="false" />
+    <list default="true" id="b9c264cc-45c0-448f-bb9a-991d3215a24a" name="Changes" comment="Migração de hexagonal para clean architecture">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/postech/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/postech/Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/postech/adaptador/condutor/api/configuracao/ClienteExcecaoAdvice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/postech/infra/handler/ClienteAdvice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/postech/adaptador/condutor/api/configuracao/DominioExcecaoAdvice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/postech/infra/handler/DominioAdvice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/postech/adaptador/condutor/api/configuracao/PedidoExcecaoAdvice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/postech/infra/handler/PedidoAdvice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/postech/adaptador/condutor/api/configuracao/ProdutoExcecaoAdvice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/postech/infra/handler/ProdutoAdvice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/postech/adaptador/condutor/api/controlador/ControladorCliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/postech/infra/resource/ClienteResource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/postech/adaptador/condutor/api/controlador/ControladorPedido.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/postech/infra/resource/PedidoResource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/postech/adaptador/condutor/api/controlador/ControladorProduto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/postech/infra/resource/ProdutoResource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/postech/adaptador/condutor/api/dto/ClienteDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/postech/infra/dto/request/ClienteRequestDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/postech/adaptador/condutor/api/dto/CpfDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/postech/infra/dto/request/CpfRequestDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/postech/adaptador/condutor/api/dto/ErroDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/postech/infra/dto/ErroDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/postech/adaptador/condutor/api/dto/FakeCheckoutDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/postech/adaptador/condutor/api/dto/PedidoDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/postech/infra/dto/response/PedidoResponseDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/postech/adaptador/condutor/api/dto/PedidoProdutoDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/postech/infra/dto/response/PedidoProdutoResponseDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/postech/adaptador/condutor/api/dto/ProdutoDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/postech/infra/dto/request/ProdutoRequestDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/postech/adaptador/condutor/api/dto/entrada/PedidoEntradaDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/postech/infra/dto/request/PedidoRequestDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/postech/adaptador/condutor/api/dto/entrada/PedidoProdutoEntradaDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/postech/infra/dto/request/PedidoProdutoRequestDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/postech/adaptador/condutor/api/entidade/ClienteEntidade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/postech/infra/persistence/entities/ClienteEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/postech/adaptador/condutor/api/entidade/PedidoEntidade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/postech/infra/persistence/entities/PedidoEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/postech/adaptador/condutor/api/entidade/PedidoProdutoEntidade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/postech/infra/persistence/entities/PedidoProdutoEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/postech/adaptador/condutor/api/entidade/ProdutoEntidade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/postech/infra/persistence/entities/ProdutoEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/postech/adaptador/condutor/api/mapeador/MapeadorCliente.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/postech/adaptador/condutor/api/mapeador/MapeadorPedido.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/postech/infra/mappers/PedidoMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/postech/adaptador/condutor/api/mapeador/MapeadorPedidoProduto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/postech/infra/mappers/PedidoProdutoMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/postech/adaptador/condutor/api/mapeador/MapeadorProduto.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/postech/adaptador/condutor/api/tratador/ResponseHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/postech/adaptador/conduzido/infra/ClienteRepositorioImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/postech/adaptador/conduzido/infra/PedidoRepositorioImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/postech/infra/gateways/RepositorioDePedidoGatewayImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/postech/adaptador/conduzido/infra/ProdutoRepositorioImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/postech/infra/gateways/RepositorioDeProdutoGatewayImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/postech/adaptador/conduzido/infra/SpringClienteRepositorio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/postech/infra/persistence/repositories/ClienteRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/postech/adaptador/conduzido/infra/SpringPedidoRepositorio.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/postech/adaptador/conduzido/infra/SpringProdutoRepositorio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/postech/infra/persistence/repositories/ProdutoRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/postech/adaptador/configuracao/BeansConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/postech/config/BeansConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/postech/nucleo/aplicacao/servico/ClienteServico.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/postech/nucleo/aplicacao/servico/ClienteServicoImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/postech/nucleo/aplicacao/servico/PedidoServico.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/postech/nucleo/aplicacao/servico/PedidoServicoImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/postech/nucleo/aplicacao/servico/ProdutoServico.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/postech/nucleo/aplicacao/servico/ProdutoServicoImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/postech/nucleo/dominio/base/AgregacaoInterface.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/postech/nucleo/dominio/base/ClienteExcecao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/postech/domain/exceptions/ClienteException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/postech/nucleo/dominio/base/DominioExcecao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/postech/domain/exceptions/DominioException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/postech/nucleo/dominio/base/PedidoExcecao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/postech/domain/exceptions/PedidoException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/postech/nucleo/dominio/base/PreocupacaoAssercao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/postech/nucleo/dominio/base/ProdutoExcecao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/postech/domain/exceptions/ProdutoException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/postech/nucleo/dominio/enums/CategoriaProdutoEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/postech/domain/enums/CategoriaProdutoEnum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/postech/nucleo/dominio/enums/ErroClienteEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/postech/domain/enums/ErroClienteEnum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/postech/nucleo/dominio/enums/ErroPedidoEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/postech/domain/enums/ErroPedidoEnum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/postech/nucleo/dominio/enums/ErroProdutoEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/postech/domain/enums/ErroProdutoEnum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/postech/nucleo/dominio/enums/EstadoPedidoEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/postech/domain/enums/EstadoPedidoEnum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/postech/nucleo/dominio/modelo/CPF.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/postech/domain/entities/CPF.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/postech/nucleo/dominio/modelo/Cliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/postech/domain/entities/Cliente.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/postech/nucleo/dominio/modelo/Pedido.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/postech/domain/entities/Pedido.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/postech/nucleo/dominio/modelo/PedidoProduto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/postech/domain/entities/PedidoProduto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/postech/nucleo/dominio/modelo/Produto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/postech/domain/entities/Produto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/postech/nucleo/dominio/repositorio/ClienteRepositorio.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/postech/nucleo/dominio/repositorio/PedidoRepositorio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/postech/application/gateways/RepositorioDePedidoGateway.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/postech/nucleo/dominio/repositorio/ProdutoRepositorio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/postech/application/gateways/RepositorioDeProdutoGateway.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/CPFTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/CPFTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/postech/application/gateways/RepositorioDeProdutoGateway.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/postech/application/gateways/RepositorioDeProdutoGateway.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/postech/config/BeansConfiguration.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/postech/config/UsuarioConfiguration.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -185,7 +125,15 @@
       <option name="project" value="LOCAL" />
       <updated>1721092826741</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Migração de hexagonal para clean architecture">
+      <option name="closed" value="true" />
+      <created>1721173752292</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1721173752292</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -193,7 +141,8 @@
     <MESSAGE value="Ajuste gerais, tratamento de erros, swagger, docker e adição de collection postman na raiz do projeto" />
     <MESSAGE value="Ajuste no swagger" />
     <MESSAGE value="Clone do projeto da fase 1" />
-    <option name="LAST_COMMIT_MESSAGE" value="Clone do projeto da fase 1" />
+    <MESSAGE value="Migração de hexagonal para clean architecture" />
+    <option name="LAST_COMMIT_MESSAGE" value="Migração de hexagonal para clean architecture" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

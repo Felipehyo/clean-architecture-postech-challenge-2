@@ -8,9 +8,9 @@ import java.util.List;
 public interface RepositorioDeProdutoGateway {
     Produto consultaProdutoPorId(Long id);
 
-    List<Produto> consultaTodosProdutos(CategoriaProdutoEnum produtoCategoria);//todo verificar
+    List<Produto> consultaTodosProdutos(CategoriaProdutoEnum produtoCategoria);
 
-    List<Produto> consultaProdutosPorCategoria(CategoriaProdutoEnum produtoCategoria);//todo verificar
+    List<Produto> consultaProdutosPorCategoria(CategoriaProdutoEnum produtoCategoria);
 
     Produto salvaProduto(Produto produto);
 
