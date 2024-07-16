@@ -1,5 +1,5 @@
 
-import com.postech.nucleo.dominio.modelo.CPF;
+import com.postech.domain.entities.CPF;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;

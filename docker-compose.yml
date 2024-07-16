@@ -18,18 +18,18 @@ services:
       timeout: 5s
       retries: 5
 
-  # Instância da aplicação java
-  app:
-    build:
-      context: .
-    env_file: ./env/app.env
-    restart: unless-stopped
-    depends_on:
-      - postgres
-    expose:
-      - 8080
-    ports:
-      - 8080:8080
+#  # Instância da aplicação java
+#  app:
+#    build:
+#      context: .
+#    env_file: ./env/app.env
+#    restart: unless-stopped
+#    depends_on:
+#      - postgres
+#    expose:
+#      - 8080
+#    ports:
+#      - 8080:8080
 
 volumes:
   postgres-data:
