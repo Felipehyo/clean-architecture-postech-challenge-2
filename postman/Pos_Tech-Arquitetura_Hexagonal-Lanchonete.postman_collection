@@ -1,0 +1,388 @@
+{
+	"info": {
+		"_postman_id": "81f63ac2-c82f-446a-9b0a-75939ff2447b",
+		"name": "Hexagonal Architecture",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22525842"
+	},
+	"item": [
+		{
+			"name": "Cliente",
+			"item": [
+				{
+					"name": "Create Client",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Test\",\r\n    \"email\": \"test@test.com\",\r\n    \"cpf\": \"47545854888\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/lanchonete/v1/clientes",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"lanchonete",
+								"v1",
+								"clientes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Consulta Cliente",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Test\",\r\n    \"email\": \"test@test.com\",\r\n    \"cpf\": \"475.458.548-88\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/lanchonete/v1/clientes?cpf=47545854888",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"lanchonete",
+								"v1",
+								"clientes"
+							],
+							"query": [
+								{
+									"key": "cpf",
+									"value": "47545854888"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Produto",
+			"item": [
+				{
+					"name": "Criar produto",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Nugets\",\r\n    \"descricao\": \"10 Nugets de frango\",\r\n    \"categoria\": \"ACOMPANHAMENTO\",\r\n    \"preco\": 12.00\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/lanchonete/v1/produtos",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"lanchonete",
+								"v1",
+								"produtos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar por id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/lanchonete/v1/produtos/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"lanchonete",
+								"v1",
+								"produtos",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar todos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/lanchonete/v1/produtos",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"lanchonete",
+								"v1",
+								"produtos"
+							],
+							"query": [
+								{
+									"key": "categoria",
+									"value": "ACOMPANHAMENTO",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar por categoria",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/lanchonete/v1/produtos/categoria?categoria=ACOMPANHAMENTO",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"lanchonete",
+								"v1",
+								"produtos",
+								"categoria"
+							],
+							"query": [
+								{
+									"key": "categoria",
+									"value": "ACOMPANHAMENTO"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar produto",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Novo Burger\",\r\n    \"descricao\": \"O mais delicioso lanche do restaurante\",\r\n    \"categoria\": \"LANCHE\",\r\n    \"preco\": 30\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/lanchonete/v1/produtos/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"lanchonete",
+								"v1",
+								"produtos",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deletar Produto",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/lanchonete/v1/produtos/3",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"lanchonete",
+								"v1",
+								"produtos",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Pedido",
+			"item": [
+				{
+					"name": "Criar pedido",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"clienteId\": 1,\r\n    \"pedidosProdutos\": [\r\n        {\r\n            \"produtoId\": 2,\r\n            \"quantidade\": 2\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/lanchonete/v1/pedidos",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"lanchonete",
+								"v1",
+								"pedidos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Consultar Pedido",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/lanchonete/v1/pedidos/35",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"lanchonete",
+								"v1",
+								"pedidos",
+								"35"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Consultar todos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/lanchonete/v1/pedidos",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"lanchonete",
+								"v1",
+								"pedidos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar Estado",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/lanchonete/v1/pedidos/2/estado?estado=PAGO",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"lanchonete",
+								"v1",
+								"pedidos",
+								"2",
+								"estado"
+							],
+							"query": [
+								{
+									"key": "estado",
+									"value": "PAGO"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Fake checkout",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/lanchonete/v1/pedidos/35/fake-checkout",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"lanchonete",
+								"v1",
+								"pedidos",
+								"35",
+								"fake-checkout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deletar Pedido",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/lanchonete/v1/pedidos/35",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"lanchonete",
+								"v1",
+								"pedidos",
+								"35"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

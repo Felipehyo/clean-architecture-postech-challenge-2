@@ -1,0 +1,4 @@
+FROM postgres:16.3
+ENV POSTGRES_DB fiap
+ENV POSTGRES_USER postgres
+ENV POSTGRES_PASSWORD postgres

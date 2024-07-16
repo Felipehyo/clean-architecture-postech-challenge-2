@@ -1,0 +1,31 @@
+# application.yml
+server:
+  port: ${PORT:8080}
+  servlet:
+    context-path: "/lanchonete/v1"
+
+spring:
+  application:
+    name: lanchonete
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/fiap}
+    username: ${DB_USER:postgres}
+    password: ${DB_PASSWORD:postgres}
+    driver-class-name: ${DB_DRIVER:org.postgresql.Driver}
+    hikari:
+      connectionTimeout: 60000 #Tempo que a aplicação vai esperar até que o banco esteja dispponível
+      initializationFailTimeout: -1
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: ${DB_DIALECT:org.hibernate.dialect.PostgreSQLDialect}
+
+# swagger-ui and api-docs custom path
+springdoc:
+  swagger-ui:
+    path: "/swagger-ui"
+  api-docs:
+    path: "/api-docs"

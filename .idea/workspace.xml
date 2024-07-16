@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="b9c264cc-45c0-448f-bb9a-991d3215a24a" name="Changes" comment="Ajuste no swagger">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docker/postgres/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/env/app.env" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/env/postgres.env" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/postman/Pos_Tech-Arquitetura_Hexagonal-Lanchonete.postman_collection" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/postech/Application.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/postech/adaptador/condutor/api/configuracao/ClienteExcecaoAdvice.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/postech/adaptador/condutor/api/configuracao/DominioExcecaoAdvice.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/postech/adaptador/condutor/api/configuracao/PedidoExcecaoAdvice.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/postech/adaptador/condutor/api/configuracao/ProdutoExcecaoAdvice.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/postech/adaptador/condutor/api/controlador/ControladorCliente.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/postech/adaptador/condutor/api/controlador/ControladorPedido.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/postech/adaptador/condutor/api/controlador/ControladorProduto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/postech/adaptador/condutor/api/dto/ClienteDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/postech/adaptador/condutor/api/dto/CpfDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/postech/adaptador/condutor/api/dto/ErroDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/postech/adaptador/condutor/api/dto/FakeCheckoutDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/postech/adaptador/condutor/api/dto/PedidoDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/postech/adaptador/condutor/api/dto/PedidoProdutoDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/postech/adaptador/condutor/api/dto/ProdutoDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/postech/adaptador/condutor/api/dto/entrada/PedidoEntradaDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/postech/adaptador/condutor/api/dto/entrada/PedidoProdutoEntradaDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/postech/adaptador/condutor/api/entidade/ClienteEntidade.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/postech/adaptador/condutor/api/entidade/PedidoEntidade.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/postech/adaptador/condutor/api/entidade/PedidoProdutoEntidade.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/postech/adaptador/condutor/api/entidade/ProdutoEntidade.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/postech/adaptador/condutor/api/mapeador/MapeadorCliente.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/postech/adaptador/condutor/api/mapeador/MapeadorPedido.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/postech/adaptador/condutor/api/mapeador/MapeadorPedidoProduto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/postech/adaptador/condutor/api/mapeador/MapeadorProduto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/postech/adaptador/condutor/api/tratador/ResponseHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/postech/adaptador/conduzido/infra/ClienteRepositorioImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/postech/adaptador/conduzido/infra/PedidoRepositorioImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/postech/adaptador/conduzido/infra/ProdutoRepositorioImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/postech/adaptador/conduzido/infra/SpringClienteRepositorio.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/postech/adaptador/conduzido/infra/SpringPedidoRepositorio.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/postech/adaptador/conduzido/infra/SpringProdutoRepositorio.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/postech/adaptador/configuracao/BeansConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/postech/nucleo/aplicacao/servico/ClienteServico.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/postech/nucleo/aplicacao/servico/ClienteServicoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/postech/nucleo/aplicacao/servico/PedidoServico.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/postech/nucleo/aplicacao/servico/PedidoServicoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/postech/nucleo/aplicacao/servico/ProdutoServico.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/postech/nucleo/aplicacao/servico/ProdutoServicoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/postech/nucleo/dominio/base/AgregacaoInterface.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/postech/nucleo/dominio/base/ClienteExcecao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/postech/nucleo/dominio/base/DominioExcecao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/postech/nucleo/dominio/base/PedidoExcecao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/postech/nucleo/dominio/base/PreocupacaoAssercao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/postech/nucleo/dominio/base/ProdutoExcecao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/postech/nucleo/dominio/enums/CategoriaProdutoEnum.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/postech/nucleo/dominio/enums/ErroClienteEnum.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/postech/nucleo/dominio/enums/ErroPedidoEnum.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/postech/nucleo/dominio/enums/ErroProdutoEnum.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/postech/nucleo/dominio/enums/EstadoPedidoEnum.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/postech/nucleo/dominio/modelo/CPF.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/postech/nucleo/dominio/modelo/Cliente.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/postech/nucleo/dominio/modelo/Pedido.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/postech/nucleo/dominio/modelo/PedidoProduto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/postech/nucleo/dominio/modelo/Produto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/postech/nucleo/dominio/repositorio/ClienteRepositorio.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/postech/nucleo/dominio/repositorio/PedidoRepositorio.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/postech/nucleo/dominio/repositorio/ProdutoRepositorio.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/CPFTest.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="feature/ajustes-gerais" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
+  <component name="ProjectId" id="2hOcBqx9NRsWnQKphzkPJSd5mm1" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Application.executor": "Run",
+    "Maven.tech-challenge [clean].executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/felip/Desktop/Develop/FIAP/hexagonal-architecture-postech-challenge-2",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\felip\Desktop\Develop\FIAP\hexagonal-architecture-postech-challenge\postman" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.postech.adaptador.condutor.api.dto" />
+      <recent name="com.postech.nucleo.dominio.enums" />
+      <recent name="com.postech.nucleo.dominio.base" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Application" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.postech.Application" />
+      <module name="tech-challenge" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.postech.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-17.0.10-corretto-17.0.10-4caba194b151-5cd809f4" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task id="LOCAL-00001" summary="Ajuste gerais, tratamento de erros, swagger, docker e adição de collection postman na raiz do projeto">
+      <option name="closed" value="true" />
+      <created>1716869841179</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1716869841179</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Ajuste no swagger">
+      <option name="closed" value="true" />
+      <created>1716895193409</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1716895193409</updated>
+    </task>
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b9c264cc-45c0-448f-bb9a-991d3215a24a" name="Changes" comment="Ajuste no swagger" />
+      <created>1717468439036</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1717468439036</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
+    <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Versão do docker-compose atualizada" />
+    <MESSAGE value="Ajuste gerais, tratamento de erros, swagger, docker e adição de collection postman na raiz do projeto" />
+    <MESSAGE value="Ajuste no swagger" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ajuste no swagger" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/postech/adaptador/conduzido/infra/ClienteRepositorioImpl.java</url>
+          <line>26</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/postech/nucleo/aplicacao/servico/ProdutoServicoImpl.java</url>
+          <line>84</line>
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="org.hibernate.proxy.pojo.bytebuddy.ByteBuddyInterceptor" memberName="id" />
+        <PinnedItemInfo parentTag="com.postech.nucleo.dominio.modelo.Pedido" memberName="pedidosProdutos" />
+      </pinned-members>
+    </pin-to-top-manager>
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="pedidoEntidade.pedidosProdutos" />
+        <watch expression="pedidoRepositorio.salvaPedido(pedidoEntidade)" />
+      </configuration>
+    </watches-manager>
+  </component>
+</project>
