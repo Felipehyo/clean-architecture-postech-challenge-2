@@ -8,7 +8,9 @@ import com.postech.domain.enums.ErroPedidoEnum;
 import com.postech.domain.enums.EstadoPedidoEnum;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static com.postech.application.utils.EstadoPedidoUtils.validaEstado;
 
@@ -36,22 +38,6 @@ public class PedidoUseCases {
         return pedido;
     }
 
-
-    public Pedido cadastrar(Pedido pedido) {
-
-        var cliente = clienteUseCases.buscarPorId(pedido.getCliente().getId());
-        var listaProdutos = new ArrayList<PedidoProduto>();
-
-        Pedido novoPedido = repositorioDePedido.salvaPedido(new Pedido(null, cliente, EstadoPedidoEnum.PENDENTE_PAGAMENTO, null));
-
-        for (PedidoProduto pedidoProduto : pedido.getPedidosProdutos()) {
-            var produto = produtoUseCases.consultaPorId(pedidoProduto.getProduto().getId());
-            listaProdutos.add(new PedidoProduto(null, novoPedido, produto, pedidoProduto.getQuantidade()));
-        }
-
-        novoPedido.setPedidosProdutos(listaProdutos);
-        return repositorioDePedido.salvaPedido(novoPedido);
-    }
 
 
     public Pedido atualizaEstadoPorIdDoPedido(Long idDoPedido, EstadoPedidoEnum estado) {
@@ -96,4 +82,23 @@ public class PedidoUseCases {
         }
     }
 
+    public List<Pedido> listarPedidos() {
+
+        List<Pedido> pedidos = consultaTodosOsPedidos();
+
+        List<Pedido> pedidosFiltrados = filtrarPedidos(pedidos, List.of(EstadoPedidoEnum.CANCELADO, EstadoPedidoEnum.FINALIZADO));
+
+        return ordenarListarPedidos(pedidosFiltrados);
+    }
+
+    private List<Pedido> ordenarListarPedidos(List<Pedido> pedidos) {
+        return pedidos.stream()
+                .sorted(Comparator.comparing((Pedido p) -> p.getEstado().getOrdem(), Comparator.reverseOrder())
+                        .thenComparing(Pedido::getId))
+                .toList();
+    }
+
+    public List<Pedido> filtrarPedidos(List<Pedido> pedidos, List<EstadoPedidoEnum> estadosParaRetirar){
+        return pedidos.stream().filter(x -> !estadosParaRetirar.contains(x.getEstado())).collect(Collectors.toList());
+    }
 }

@@ -9,7 +9,7 @@ import org.mapstruct.Mapping;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", uses = PedidoProdutoMapper.class)
 public interface PedidoMapper {
 
     @Mapping(target = "cliente.cpf", source = "pedido.cliente.cpf.numero")

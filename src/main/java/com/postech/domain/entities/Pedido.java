@@ -14,13 +14,14 @@ public class Pedido {
     private EstadoPedidoEnum estado;
     private List<PedidoProduto> pedidosProdutos;
 
-    public Pedido(Long id, Cliente cliente, EstadoPedidoEnum estado, List<PedidoProduto> pedidosProdutos) {
+    public Pedido( Long id, Cliente cliente, EstadoPedidoEnum estado, List<PedidoProduto> pedidosProdutos) {
         this.id = id;
         this.cliente = cliente;
         this.estado = estado;
         this.pedidosProdutos = pedidosProdutos;
         validaEntidade();
     }
+
 
     public void validaEntidade() throws DominioException {
         ValidacaoUtils.validaArgumentoNaoNulo(estado, "O estado do pedido não pode estar vazio!");

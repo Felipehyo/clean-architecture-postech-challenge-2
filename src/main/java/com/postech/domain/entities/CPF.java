@@ -1,11 +1,17 @@
 package com.postech.domain.entities;
 
+import com.postech.domain.exceptions.DominioException;
+
 import java.util.InputMismatchException;
 
 public class CPF {
-    private String numero;
+
+    private final String numero;
 
     public CPF(String numero) {
+        if(!this.validar(numero)){
+            throw new DominioException("O cpf informado é inválido");
+        }
         this.numero = numero;
     }
 
@@ -13,11 +19,7 @@ public class CPF {
         return numero;
     }
 
-    public void setNumero(String numero) {
-        this.numero = numero;
-    }
-
-    public boolean validar() {
+    public boolean validar(String numero) {
         if (numero.equals("00000000000") ||
                 numero.equals("11111111111") ||
                 numero.equals("22222222222") || numero.equals("33333333333") ||

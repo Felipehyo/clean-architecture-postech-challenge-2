@@ -21,15 +21,11 @@ public class Cliente {
         this.email = email;
         this.cpf = cpf;
         validaEntidade();
-
     }
 
     public void validaEntidade() throws DominioException {
         ValidacaoUtils.validaArgumentoNaoVazio(nome, "O nome não pode estar vazio!");
         ValidacaoUtils.validaArgumentoNaoVazio(email, "O email não pode estar vazio!");
-        if (!cpf.validar()) {
-            throw new DominioException("O cpf informado é inválido");
-        }
     }
 
     public Long getId() {

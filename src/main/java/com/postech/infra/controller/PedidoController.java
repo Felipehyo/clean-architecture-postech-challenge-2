@@ -1,6 +1,8 @@
 package com.postech.infra.controller;
 
+import com.postech.application.usecases.CriarPedidoUseCases;
 import com.postech.application.usecases.PedidoUseCases;
+import com.postech.application.usecases.SalvarPedidoUseCases;
 import com.postech.domain.entities.Pedido;
 import com.postech.domain.enums.ErroPedidoEnum;
 import com.postech.domain.enums.EstadoPedidoEnum;
@@ -19,16 +21,24 @@ public class PedidoController implements PedidoResource {
 
     private final PedidoUseCases useCases;
     private final PedidoMapper mapper;
+    private final CriarPedidoUseCases criaPedidoUseCases;
+    private final SalvarPedidoUseCases salvarPedidoUseCases;
 
-    public PedidoController(PedidoUseCases useCases, PedidoMapper mapper) {
+    public PedidoController(PedidoUseCases useCases, PedidoMapper mapper, CriarPedidoUseCases criaPedidoUseCases, SalvarPedidoUseCases salvarPedidoUseCases) {
         this.useCases = useCases;
         this.mapper = mapper;
+        this.criaPedidoUseCases = criaPedidoUseCases;
+        this.salvarPedidoUseCases = salvarPedidoUseCases;
     }
 
     @Override
     public ResponseEntity<Object> criarPedido(PedidoRequestDTO pedidoDTO) {
-        Pedido pedido = useCases.cadastrar(mapper.paraDominio(pedidoDTO));
-        return ResponseEntity.status(HttpStatus.CREATED).body(mapper.paraResponseDto(pedido));
+
+        Pedido pedido = criaPedidoUseCases.criaPedido(pedidoDTO);
+
+        Pedido pedidoSalvo = salvarPedidoUseCases.salvarPedido(pedido);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(mapper.paraResponseDto(pedidoSalvo));
     }
 
     @Override
@@ -43,9 +53,10 @@ public class PedidoController implements PedidoResource {
         return ResponseEntity.ok().body(pedido.getEstado());//todo
     }
 
+
     @Override
-    public ResponseEntity<Object> consultarTodosPedidos() {
-        List<Pedido> pedidos = useCases.consultaTodosOsPedidos();
+    public ResponseEntity<Object> listarPedidos() {
+        List<Pedido> pedidos = useCases.listarPedidos();
         return ResponseEntity.ok().body(mapper.paraDTOLista(pedidos));
     }
 

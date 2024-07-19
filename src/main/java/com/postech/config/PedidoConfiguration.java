@@ -1,7 +1,8 @@
 package com.postech.config;
 
+import com.postech.application.gateways.RepositorioDePedidoGateway;
 import com.postech.application.gateways.RepositorioDeProdutoGateway;
-import com.postech.application.usecases.ProdutoUseCases;
+import com.postech.application.usecases.*;
 import com.postech.infra.gateways.RepositorioDeProdutoGatewayImpl;
 import com.postech.infra.mappers.ProdutoMapper;
 import com.postech.infra.persistence.repositories.ProdutoRepository;
@@ -19,6 +20,16 @@ public class PedidoConfiguration {
     @Bean
     RepositorioDeProdutoGatewayImpl repositorioDeProdutoGateway(ProdutoRepository repository, ProdutoMapper mapper) {
         return new RepositorioDeProdutoGatewayImpl(repository, mapper);
+    }
+
+    @Bean
+    CriarPedidoUseCases criarPedidoUseCases(ProdutoUseCases produtoUseCases, ClienteUseCases clienteUseCases, PedidoUseCases pedidoUseCases){
+        return new CriarPedidoUseCases(produtoUseCases, clienteUseCases, pedidoUseCases);
+    }
+
+    @Bean
+    SalvarPedidoUseCases salvarPedidoUseCases(RepositorioDePedidoGateway repositorioDePedidoGateway){
+        return new SalvarPedidoUseCases(repositorioDePedidoGateway);
     }
 
 }

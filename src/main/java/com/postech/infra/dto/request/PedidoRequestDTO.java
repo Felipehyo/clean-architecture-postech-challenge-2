@@ -1,5 +1,6 @@
 package com.postech.infra.dto.request;
 
+import com.postech.domain.enums.EstadoPedidoEnum;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
