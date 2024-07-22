@@ -15,8 +15,6 @@ public class EstadoPedidoUtils {
      */
     public static boolean validaEstado(EstadoPedidoEnum estadoAtual, EstadoPedidoEnum novoEstado) {
         return switch (estadoAtual) {
-            case PENDENTE_PAGAMENTO -> novoEstado == EstadoPedidoEnum.PAGO || novoEstado == EstadoPedidoEnum.CANCELADO;
-            case PAGO -> novoEstado == EstadoPedidoEnum.RECEBIDO || novoEstado == EstadoPedidoEnum.CANCELADO;
             case RECEBIDO -> novoEstado == EstadoPedidoEnum.PREPARANDO || novoEstado == EstadoPedidoEnum.CANCELADO;
             case PREPARANDO -> novoEstado == EstadoPedidoEnum.PRONTO || novoEstado == EstadoPedidoEnum.CANCELADO;
             case PRONTO -> novoEstado == EstadoPedidoEnum.FINALIZADO || novoEstado == EstadoPedidoEnum.CANCELADO;

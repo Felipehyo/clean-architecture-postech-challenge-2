@@ -1,8 +1,8 @@
 package com.postech.infra.controller;
 
-import com.postech.application.usecases.ClienteUseCases;
 import com.postech.application.usecases.PagamentoUseCases;
 import com.postech.application.usecases.PedidoUseCases;
+import com.postech.domain.entities.Pagamento;
 import com.postech.domain.entities.Pedido;
 import com.postech.infra.dto.request.PagamentoRequestDTO;
 import com.postech.infra.resource.PagamentoResource;
@@ -27,7 +27,7 @@ public class PagamentoController implements PagamentoResource {
     public ResponseEntity<Object> criarPagamento(PagamentoRequestDTO pagamentoRequestDTO) {
         Pedido pedido = pedidoUseCases.consultaPorId(pagamentoRequestDTO.getIdPedido());
 
-        String pagamento = useCases.criarPagamentoPix(pedido);
+        Pagamento pagamento = useCases.criarPagamentoPix(pedido);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(pagamento);
     }

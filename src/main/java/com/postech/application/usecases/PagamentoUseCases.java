@@ -5,9 +5,12 @@ import com.mercadopago.client.payment.PaymentClient;
 import com.mercadopago.client.payment.PaymentCreateRequest;
 import com.mercadopago.client.payment.PaymentPayerRequest;
 import com.mercadopago.resources.payment.Payment;
+import com.postech.application.gateways.RepositorioDePagamentoGateway;
+import com.postech.domain.entities.Pagamento;
 import com.postech.domain.entities.Pedido;
 import com.postech.domain.entities.PedidoProduto;
 import com.postech.domain.enums.ErroPedidoEnum;
+import com.postech.domain.enums.EstadoPagamentoEnum;
 import com.postech.domain.exceptions.PedidoException;
 
 import java.math.BigDecimal;
@@ -15,8 +18,16 @@ import java.util.List;
 
 public class PagamentoUseCases {
 
+    private PedidoUseCases pedidoUseCases;
 
-    public String criarPagamentoPix(Pedido pedido) {
+    private RepositorioDePagamentoGateway repositorio;
+
+    public PagamentoUseCases(PedidoUseCases pedidoUseCases, RepositorioDePagamentoGateway repositorio) {
+        this.pedidoUseCases = pedidoUseCases;
+        this.repositorio = repositorio;
+    }
+
+    public Pagamento criarPagamentoPix(Pedido pedido) {
         try{
 
             PaymentCreateRequest paymentCreateRequest = PaymentCreateRequest.builder()
@@ -30,7 +41,9 @@ public class PagamentoUseCases {
 
             Payment payment = paymentClient.create(paymentCreateRequest);
 
-            return payment.getPointOfInteraction().getTransactionData().getQrCode();
+            return repositorio.salvaPagamento(new Pagamento(null, payment.getTransactionAmount().doubleValue(),
+                    EstadoPagamentoEnum.PENDENTE_PAGAMENTO, pedido, null, payment.getDateCreated().toLocalDate(),
+                    "pix", payment.getPointOfInteraction().getTransactionData().getQrCode()));
         }catch (Exception e){
             throw new PedidoException(ErroPedidoEnum.ESTADO_INVALIDO);
         }

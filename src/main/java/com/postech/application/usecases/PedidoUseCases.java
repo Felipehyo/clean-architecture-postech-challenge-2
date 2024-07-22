@@ -69,7 +69,6 @@ public class PedidoUseCases {
 
 
     public void checkout(Long id) {
-        this.atualizaEstadoPorIdDoPedido(id, EstadoPedidoEnum.PAGO);
         this.atualizaEstadoPorIdDoPedido(id, EstadoPedidoEnum.RECEBIDO);
     }
 

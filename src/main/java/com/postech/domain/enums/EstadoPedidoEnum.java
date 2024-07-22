@@ -2,12 +2,10 @@ package com.postech.domain.enums;
 
 public enum EstadoPedidoEnum {
 
-    PAGO(3),
-    PENDENTE_PAGAMENTO(2),
     RECEBIDO(1),
-    PREPARANDO(4),
-    PRONTO(5),
-    FINALIZADO(6),
+    PREPARANDO(2),
+    PRONTO(3),
+    FINALIZADO(4),
     CANCELADO(null);
 
     final Integer ordem;
