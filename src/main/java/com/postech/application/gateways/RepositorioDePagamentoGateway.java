@@ -6,6 +6,6 @@ public interface RepositorioDePagamentoGateway {
 
     Pagamento salvaPagamento(Pagamento pagamento);
 
-    Pagamento consultaPagamentoPorId(Long id);
+    Pagamento consultaPagamentoPorIdPedido(Long id);
 
 }

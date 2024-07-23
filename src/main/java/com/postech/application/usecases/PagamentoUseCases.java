@@ -66,4 +66,9 @@ public class PagamentoUseCases {
                 .identification(IdentificationRequest.builder().type("CPF").number(pedido.getCliente().getCpf().getNumero()).build())
                 .build();
     }
+
+    public EstadoPagamentoEnum getStatusPagamento(Long idProduto){
+        Pagamento pagamento = repositorio.consultaPagamentoPorIdPedido(idProduto);
+        return pagamento.getEstadoPagamento();
+    }
 }

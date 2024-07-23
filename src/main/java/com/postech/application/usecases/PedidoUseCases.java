@@ -1,13 +1,12 @@
 package com.postech.application.usecases;
 
 import com.postech.application.gateways.RepositorioDePedidoGateway;
+import com.postech.domain.enums.EstadoPagamentoEnum;
 import com.postech.domain.exceptions.PedidoException;
 import com.postech.domain.entities.Pedido;
-import com.postech.domain.entities.PedidoProduto;
 import com.postech.domain.enums.ErroPedidoEnum;
 import com.postech.domain.enums.EstadoPedidoEnum;
 
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -18,14 +17,17 @@ public class PedidoUseCases {
 
     private final RepositorioDePedidoGateway repositorioDePedido;
 
+    private final PagamentoUseCases pagamentoUseCases;
+
     private final ProdutoUseCases produtoUseCases;
 
     private final ClienteUseCases clienteUseCases;
 
-    public PedidoUseCases(RepositorioDePedidoGateway repositorioDePedido, ProdutoUseCases produtoUseCases, ClienteUseCases clienteUseCases) {
+    public PedidoUseCases(RepositorioDePedidoGateway repositorioDePedido, ProdutoUseCases produtoUseCases, ClienteUseCases clienteUseCases, PagamentoUseCases pagamentoUseCases) {
         this.repositorioDePedido = repositorioDePedido;
         this.produtoUseCases = produtoUseCases;
         this.clienteUseCases = clienteUseCases;
+        this.pagamentoUseCases = pagamentoUseCases;
     }
 
     public Pedido consultaPorId(Long id) {
@@ -68,8 +70,14 @@ public class PedidoUseCases {
     }
 
 
-    public void checkout(Long id) {
-        this.atualizaEstadoPorIdDoPedido(id, EstadoPedidoEnum.RECEBIDO);
+    public Pedido checkout(Long id) {
+        EstadoPagamentoEnum estadoPagamento = pagamentoUseCases.getStatusPagamento(id);
+
+        if(estadoPagamento.equals(EstadoPagamentoEnum.PAGO)){
+            return this.atualizaEstadoPorIdDoPedido(id, EstadoPedidoEnum.PREPARANDO);
+        }
+
+        throw new PedidoException(ErroPedidoEnum.ESTADO_INVALIDO);
     }
 
 

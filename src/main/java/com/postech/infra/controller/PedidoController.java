@@ -67,10 +67,9 @@ public class PedidoController implements PedidoResource {
     }
 
     @Override
-    public ResponseEntity<Object> checkout(Long id) { //todo implementar
-        useCases.checkout(id);
-        throw new PedidoException(ErroPedidoEnum.NAO_IMPLEMENTADO);
-//        return ResponseEntity.ok().body(new FakeCheckoutDTO("Pedido realizado e enviado para a fila da cozinha"));
+    public ResponseEntity<Object> checkout(Long id) {
+        Pedido checkout = useCases.checkout(id);
+        return ResponseEntity.ok().body("Pedido realizado e enviado para a fila da cozinha");
     }
 
     @Override
