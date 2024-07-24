@@ -39,7 +39,7 @@ public class RepositorioDePedidoGatewayImpl implements RepositorioDePedidoGatewa
 
     @Override
     public List<Pedido> buscaTodosPedidos() {
-        List<PedidoEntity> entity = repositorio.findAll();
+        List<PedidoEntity> entity = repositorio.findAllByOrderByIdAsc();
         return Optional.of(entity).orElse(null).stream().map(mapper::paraDominio).collect(Collectors.toList());
     }
 

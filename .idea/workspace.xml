@@ -5,10 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b9c264cc-45c0-448f-bb9a-991d3215a24a" name="Changes" comment="Migração de hexagonal para clean architecture">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/postech/application/gateways/RepositorioDeProdutoGateway.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/postech/application/gateways/RepositorioDeProdutoGateway.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/postech/config/BeansConfiguration.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/postech/config/UsuarioConfiguration.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/postech/infra/gateways/RepositorioDePedidoGatewayImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/postech/infra/gateways/RepositorioDePedidoGatewayImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/postech/infra/persistence/repositories/PedidoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/postech/infra/persistence/repositories/PedidoRepository.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,7 +23,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="feature/ajustes-gerais" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -49,13 +47,14 @@
     "Maven.tech-challenge [install].executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "alysson",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/felip/Desktop/Develop/FIAP/hexagonal-architecture-postech-challenge-2",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)"
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -70,7 +69,7 @@
       <recent name="com.postech.application.gateways" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Application">
     <configuration name="Application" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.postech.Application" />
       <module name="tech-challenge" />
@@ -80,6 +79,13 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="tech-challenge" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.postech.Application" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -135,6 +141,17 @@
     </task>
     <option name="localTasksCounter" value="5" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Versão do docker-compose atualizada" />
