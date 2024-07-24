@@ -28,8 +28,8 @@ public class PedidoConfiguration {
     }
 
     @Bean
-    SalvarPedidoUseCases salvarPedidoUseCases(RepositorioDePedidoGateway repositorioDePedidoGateway){
-        return new SalvarPedidoUseCases(repositorioDePedidoGateway);
+    AtualizarPedidoUseCases atualizarPedidoUseCases(RepositorioDePedidoGateway repositorioDePedidoGateway){
+        return new AtualizarPedidoUseCases(repositorioDePedidoGateway);
     }
 
 }

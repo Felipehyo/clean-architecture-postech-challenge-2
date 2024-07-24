@@ -9,8 +9,10 @@ import com.postech.application.gateways.RepositorioDePagamentoGateway;
 import com.postech.domain.entities.Pagamento;
 import com.postech.domain.entities.Pedido;
 import com.postech.domain.entities.PedidoProduto;
+import com.postech.domain.enums.ErroPagamentoEnum;
 import com.postech.domain.enums.ErroPedidoEnum;
 import com.postech.domain.enums.EstadoPagamentoEnum;
+import com.postech.domain.exceptions.PagamentoException;
 import com.postech.domain.exceptions.PedidoException;
 
 import java.math.BigDecimal;
@@ -31,7 +33,7 @@ public class PagamentoUseCases {
         try{
 
             PaymentCreateRequest paymentCreateRequest = PaymentCreateRequest.builder()
-                    .transactionAmount(calcularValorPedido(pedido))
+                    .transactionAmount(pedidoUseCases.calcularValorPedido(pedido))
                     .description("Pagamento do pedido " + pedido.getId())
                     .paymentMethodId("pix")
                     .payer(PaymentPayerRequest.builder().email("alymaciel8@gmail.com").build())
@@ -49,15 +51,8 @@ public class PagamentoUseCases {
         }
     }
 
-    private BigDecimal calcularValorPedido(Pedido pedido) {
-        List<PedidoProduto> pedidosProdutos = pedido.getPedidosProdutos();
 
-        double sum = pedidosProdutos.stream().mapToDouble(x -> x.getProduto().getPreco() * x.getQuantidade()).sum();
-
-        return BigDecimal.valueOf(sum);
-    }
-
-    private PaymentPayerRequest criaPayer(Pedido pedido) {
+    private PaymentPayerRequest criaPagador(Pedido pedido) {
         return PaymentPayerRequest.builder().id(pedido.getId().toString())
                 .email(pedido.getCliente().getEmail())
                 .firstName(pedido.getCliente().getNome())
@@ -69,6 +64,11 @@ public class PagamentoUseCases {
 
     public EstadoPagamentoEnum getStatusPagamento(Long idProduto){
         Pagamento pagamento = repositorio.consultaPagamentoPorIdPedido(idProduto);
+
+        if(pagamento == null){
+            throw new PagamentoException(ErroPagamentoEnum.PAGAMENTO_NAO_ENCONTRADO_POR_ID_PEDIDO);
+        }
+
         return pagamento.getEstadoPagamento();
     }
 }

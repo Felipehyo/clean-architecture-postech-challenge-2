@@ -4,6 +4,7 @@ import com.postech.domain.entities.Cliente;
 import com.postech.domain.entities.Pedido;
 import com.postech.domain.entities.PedidoProduto;
 import com.postech.domain.enums.EstadoPedidoEnum;
+import com.postech.domain.interfaces.CriarPedido;
 import com.postech.infra.dto.request.PedidoProdutoRequestDTO;
 import com.postech.infra.dto.request.PedidoRequestDTO;
 
@@ -11,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class CriarPedidoUseCases {
+public class CriarPedidoUseCases implements CriarPedido {
 
     private final ProdutoUseCases produtoUseCases;
 

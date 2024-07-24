@@ -3,14 +3,15 @@ package com.postech.application.usecases;
 import com.postech.application.gateways.RepositorioDePedidoGateway;
 import com.postech.domain.entities.Pedido;
 import com.postech.domain.entities.PedidoProduto;
+import com.postech.domain.interfaces.AtualizarPedido;
 
 import java.util.List;
 
-public class SalvarPedidoUseCases {
+public class AtualizarPedidoUseCases implements AtualizarPedido {
 
     private final RepositorioDePedidoGateway repositorioDePedidoGateway;
 
-    public SalvarPedidoUseCases(RepositorioDePedidoGateway repositorioDePedidoGateway) {
+    public AtualizarPedidoUseCases(RepositorioDePedidoGateway repositorioDePedidoGateway) {
         this.repositorioDePedidoGateway = repositorioDePedidoGateway;
     }
 

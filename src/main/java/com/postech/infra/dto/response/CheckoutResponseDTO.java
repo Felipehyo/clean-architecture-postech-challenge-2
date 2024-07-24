@@ -1,4 +1,4 @@
 package com.postech.infra.dto.response;
 
-public record CheckoutResponseDTO(String mensagem) {
+public record CheckoutResponseDTO(String mensagem, PedidoResponseDTO pedidoResponseDTO) {
 }

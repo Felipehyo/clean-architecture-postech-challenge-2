@@ -4,8 +4,9 @@ import com.postech.application.gateways.RepositorioDeClienteGateway;
 import com.postech.domain.exceptions.ClienteException;
 import com.postech.domain.entities.Cliente;
 import com.postech.domain.enums.ErroClienteEnum;
+import com.postech.domain.interfaces.ClienteServico;
 
-public class ClienteUseCases {
+public class ClienteUseCases implements ClienteServico {
 
     private final RepositorioDeClienteGateway repositorio;
 

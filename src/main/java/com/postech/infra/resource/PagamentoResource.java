@@ -11,10 +11,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/pagamentos")
@@ -29,4 +26,16 @@ public interface PagamentoResource {
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
     ResponseEntity<Object> criarPagamento(@RequestBody PagamentoRequestDTO pagamentoRequestDTO);
+
+
+    @Operation(summary = "Pegar estado pagamento", method = "GET", description = "Recurso para criar um pagamento")
+    @ApiResponses(value = {
+            @ApiResponse(description = "Estado do pagamento encontrado com sucesso", responseCode = "200", content = @Content(mediaType = "application/json", schema = @Schema(implementation = PagamentoRequestDTO.class))),
+            @ApiResponse(responseCode = "400", description = "Erro ao procurar estado do pagamento", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErroDTO.class))),
+    })
+    @GetMapping(consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    ResponseEntity<Object> getEstadoPagamento(PagamentoRequestDTO pagamentoRequestDTO);
+
+
 }

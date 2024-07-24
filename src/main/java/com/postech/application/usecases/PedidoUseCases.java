@@ -1,19 +1,22 @@
 package com.postech.application.usecases;
 
 import com.postech.application.gateways.RepositorioDePedidoGateway;
+import com.postech.domain.entities.PedidoProduto;
 import com.postech.domain.enums.EstadoPagamentoEnum;
 import com.postech.domain.exceptions.PedidoException;
 import com.postech.domain.entities.Pedido;
 import com.postech.domain.enums.ErroPedidoEnum;
 import com.postech.domain.enums.EstadoPedidoEnum;
+import com.postech.domain.interfaces.PedidoServico;
 
+import java.math.BigDecimal;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import static com.postech.application.utils.EstadoPedidoUtils.validaEstado;
 
-public class PedidoUseCases {
+public class PedidoUseCases implements PedidoServico {
 
     private final RepositorioDePedidoGateway repositorioDePedido;
 
@@ -40,7 +43,13 @@ public class PedidoUseCases {
         return pedido;
     }
 
+    public BigDecimal calcularValorPedido(Pedido pedido) {
+        List<PedidoProduto> pedidosProdutos = pedido.getPedidosProdutos();
 
+        double sum = pedidosProdutos.stream().mapToDouble(x -> x.getProduto().getPreco() * x.getQuantidade()).sum();
+
+        return BigDecimal.valueOf(sum);
+    }
 
     public Pedido atualizaEstadoPorIdDoPedido(Long idDoPedido, EstadoPedidoEnum estado) {
         Pedido pedido = this.consultaPorId(idDoPedido);

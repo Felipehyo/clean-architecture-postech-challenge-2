@@ -2,11 +2,11 @@ package com.postech.infra.gateways;
 
 import com.postech.application.gateways.RepositorioDePagamentoGateway;
 import com.postech.domain.entities.Pagamento;
-import com.postech.domain.enums.ErroPedidoEnum;
-import com.postech.domain.exceptions.PedidoException;
 import com.postech.infra.mappers.PagamentoMapper;
 import com.postech.infra.persistence.entities.PagamentoEntity;
 import com.postech.infra.persistence.repositories.PagamentoRepository;
+
+import java.util.Optional;
 
 public class RepositorioDePagamentoImpl implements RepositorioDePagamentoGateway {
 
@@ -26,12 +26,8 @@ public class RepositorioDePagamentoImpl implements RepositorioDePagamentoGateway
 
     @Override
     public Pagamento consultaPagamentoPorIdPedido(Long id) {
-        PagamentoEntity pagamentoEntity = repositorio.getPagamentoEntityByPedidoId(id);
+        Optional<PagamentoEntity> entity = repositorio.getPagamentoEntityByPedidoId(id);
+        return entity.map(mapper::paraDominio).orElse(null);
 
-        if(pagamentoEntity == null){
-            throw new PedidoException(ErroPedidoEnum.PEDIDOS_NAO_ECONTRADOS);
-        }
-
-        return mapper.paraDominio(pagamentoEntity);
     }
 }
