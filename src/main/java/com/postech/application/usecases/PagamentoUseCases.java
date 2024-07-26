@@ -8,15 +8,13 @@ import com.mercadopago.resources.payment.Payment;
 import com.postech.application.gateways.RepositorioDePagamentoGateway;
 import com.postech.domain.entities.Pagamento;
 import com.postech.domain.entities.Pedido;
-import com.postech.domain.entities.PedidoProduto;
 import com.postech.domain.enums.ErroPagamentoEnum;
 import com.postech.domain.enums.ErroPedidoEnum;
 import com.postech.domain.enums.EstadoPagamentoEnum;
 import com.postech.domain.exceptions.PagamentoException;
 import com.postech.domain.exceptions.PedidoException;
+import com.postech.domain.interfaces.PagamentoInterface;
 
-import java.math.BigDecimal;
-import java.util.List;
 
 public class PagamentoUseCases {
 
@@ -24,43 +22,23 @@ public class PagamentoUseCases {
 
     private RepositorioDePagamentoGateway repositorio;
 
-    public PagamentoUseCases(PedidoUseCases pedidoUseCases, RepositorioDePagamentoGateway repositorio) {
+    private PagamentoInterface pagamentoExternoUseCase;
+
+    public PagamentoUseCases(PedidoUseCases pedidoUseCases, RepositorioDePagamentoGateway repositorio, PagamentoInterface pagamentoExternoUseCase) {
         this.pedidoUseCases = pedidoUseCases;
         this.repositorio = repositorio;
+        this.pagamentoExternoUseCase = pagamentoExternoUseCase;
     }
 
     public Pagamento criarPagamentoPix(Pedido pedido) {
         try{
-
-            PaymentCreateRequest paymentCreateRequest = PaymentCreateRequest.builder()
-                    .transactionAmount(pedidoUseCases.calcularValorPedido(pedido))
-                    .description("Pagamento do pedido " + pedido.getId())
-                    .paymentMethodId("pix")
-                    .payer(PaymentPayerRequest.builder().email("alymaciel8@gmail.com").build())
-                    .build();
-
-            PaymentClient paymentClient = new PaymentClient();
-
-            Payment payment = paymentClient.create(paymentCreateRequest);
-
-            return repositorio.salvaPagamento(new Pagamento(null, payment.getTransactionAmount().doubleValue(),
-                    EstadoPagamentoEnum.PENDENTE_PAGAMENTO, pedido, null, payment.getDateCreated().toLocalDate(),
-                    "pix", payment.getPointOfInteraction().getTransactionData().getQrCode()));
+            Pagamento pagamento = pagamentoExternoUseCase.criarPagamento(pedido);
+            return repositorio.salvaPagamento(pagamento);
         }catch (Exception e){
             throw new PedidoException(ErroPedidoEnum.ESTADO_INVALIDO);
         }
     }
 
-
-    private PaymentPayerRequest criaPagador(Pedido pedido) {
-        return PaymentPayerRequest.builder().id(pedido.getId().toString())
-                .email(pedido.getCliente().getEmail())
-                .firstName(pedido.getCliente().getNome())
-                .lastName("teste")
-                .email(pedido.getCliente().getEmail())
-                .identification(IdentificationRequest.builder().type("CPF").number(pedido.getCliente().getCpf().getNumero()).build())
-                .build();
-    }
 
     public EstadoPagamentoEnum getStatusPagamento(Long idProduto){
         Pagamento pagamento = repositorio.consultaPagamentoPorIdPedido(idProduto);

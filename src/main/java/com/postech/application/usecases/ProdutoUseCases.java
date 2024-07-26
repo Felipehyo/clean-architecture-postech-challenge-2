@@ -5,12 +5,11 @@ import com.postech.domain.exceptions.ProdutoException;
 import com.postech.domain.entities.Produto;
 import com.postech.domain.enums.CategoriaProdutoEnum;
 import com.postech.domain.enums.ErroProdutoEnum;
-import com.postech.domain.interfaces.ProdutoServico;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.List;
 
-public class ProdutoUseCases implements ProdutoServico {
+public class ProdutoUseCases  {
 
     private final RepositorioDeProdutoGateway repositorio;
 

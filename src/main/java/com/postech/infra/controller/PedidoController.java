@@ -1,8 +1,6 @@
 package com.postech.infra.controller;
 
-import com.postech.application.usecases.CriarPedidoUseCases;
 import com.postech.application.usecases.PedidoUseCases;
-import com.postech.application.usecases.AtualizarPedidoUseCases;
 import com.postech.domain.entities.Pedido;
 import com.postech.domain.enums.EstadoPedidoEnum;
 import com.postech.infra.dto.request.PedidoRequestDTO;
@@ -20,22 +18,19 @@ public class PedidoController implements PedidoResource {
 
     private final PedidoUseCases useCases;
     private final PedidoMapper mapper;
-    private final CriarPedidoUseCases criaPedidoUseCases;
-    private final AtualizarPedidoUseCases atualizarPedidoUseCases;
 
-    public PedidoController(PedidoUseCases useCases, PedidoMapper mapper, CriarPedidoUseCases criaPedidoUseCases, AtualizarPedidoUseCases atualizarPedidoUseCases) {
+
+    public PedidoController(PedidoUseCases useCases, PedidoMapper mapper) {
         this.useCases = useCases;
         this.mapper = mapper;
-        this.criaPedidoUseCases = criaPedidoUseCases;
-        this.atualizarPedidoUseCases = atualizarPedidoUseCases;
     }
 
     @Override
     public ResponseEntity<Object> criarPedido(PedidoRequestDTO pedidoDTO) {
 
-        Pedido pedido = criaPedidoUseCases.criaPedido(pedidoDTO);
+        Pedido pedido = useCases.criaPedido(pedidoDTO);
 
-        Pedido pedidoSalvo = atualizarPedidoUseCases.salvarPedido(pedido);
+        Pedido pedidoSalvo = useCases.salvarPedido(pedido);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(mapper.paraResponseDto(pedidoSalvo));
     }

@@ -1,22 +1,25 @@
 package com.postech.application.usecases;
 
 import com.postech.application.gateways.RepositorioDePedidoGateway;
+import com.postech.domain.entities.Cliente;
 import com.postech.domain.entities.PedidoProduto;
 import com.postech.domain.enums.EstadoPagamentoEnum;
 import com.postech.domain.exceptions.PedidoException;
 import com.postech.domain.entities.Pedido;
 import com.postech.domain.enums.ErroPedidoEnum;
 import com.postech.domain.enums.EstadoPedidoEnum;
-import com.postech.domain.interfaces.PedidoServico;
+import com.postech.infra.dto.request.PedidoProdutoRequestDTO;
+import com.postech.infra.dto.request.PedidoRequestDTO;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import static com.postech.application.utils.EstadoPedidoUtils.validaEstado;
 
-public class PedidoUseCases implements PedidoServico {
+public class PedidoUseCases {
 
     private final RepositorioDePedidoGateway repositorioDePedido;
 
@@ -26,7 +29,8 @@ public class PedidoUseCases implements PedidoServico {
 
     private final ClienteUseCases clienteUseCases;
 
-    public PedidoUseCases(RepositorioDePedidoGateway repositorioDePedido, ProdutoUseCases produtoUseCases, ClienteUseCases clienteUseCases, PagamentoUseCases pagamentoUseCases) {
+
+    public PedidoUseCases(RepositorioDePedidoGateway repositorioDePedido, ProdutoUseCases produtoUseCases, ClienteUseCases clienteUseCases, PagamentoUseCases pagamentoUseCases ) {
         this.repositorioDePedido = repositorioDePedido;
         this.produtoUseCases = produtoUseCases;
         this.clienteUseCases = clienteUseCases;
@@ -116,5 +120,38 @@ public class PedidoUseCases implements PedidoServico {
 
     public List<Pedido> filtrarPedidos(List<Pedido> pedidos, List<EstadoPedidoEnum> estadosParaRetirar){
         return pedidos.stream().filter(x -> !estadosParaRetirar.contains(x.getEstado())).collect(Collectors.toList());
+    }
+
+    public Pedido salvarPedido(Pedido pedido){
+        List<PedidoProduto> pedidosProdutos = pedido.getPedidosProdutos();
+
+        pedido.setPedidosProdutos(null);
+
+        Pedido pedidoSalvo = repositorioDePedido.salvaPedido(pedido);
+
+        pedidosProdutos.forEach(x -> {
+            x.setPedido(pedidoSalvo);
+        });
+
+        pedidoSalvo.setPedidosProdutos(pedidosProdutos);
+
+        return repositorioDePedido.salvaPedido(pedidoSalvo);
+    }
+
+    public Pedido criaPedido(PedidoRequestDTO pedidoDTO){
+        List<PedidoProdutoRequestDTO> pedidosProdutos = pedidoDTO.getPedidosProdutos();
+
+        List<PedidoProduto> pedidoProdutos = new ArrayList<>();
+
+        for (PedidoProdutoRequestDTO pedidosProduto : pedidosProdutos) {
+            PedidoProduto pedidoProduto = new PedidoProduto();
+            pedidoProduto.setProduto(produtoUseCases.consultaPorId(pedidosProduto.getProdutoId()));
+            pedidoProduto.setQuantidade(pedidosProduto.getQuantidade());
+            pedidoProdutos.add(pedidoProduto);
+        }
+
+        Cliente cliente = clienteUseCases.buscarPorId(pedidoDTO.getClienteId());
+
+        return new Pedido(null, cliente, EstadoPedidoEnum.RECEBIDO, pedidoProdutos);
     }
 }
