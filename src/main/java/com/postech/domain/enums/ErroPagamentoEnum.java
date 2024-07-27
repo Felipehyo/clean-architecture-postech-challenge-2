@@ -6,6 +6,7 @@ public enum ErroPagamentoEnum {
     PAGAMENTO_NAO_ENCONTRADO(404, "Pagamento com o ID informado não foi encontrado"),
     PAGAMENTO_NAO_ENCONTRADO_POR_ID_PEDIDO(404, "Pagamento com o ID de pedido informado não foi encontrado"),
     ESTADO_INVALIDO(400, "Não foi possivel realizar a transição de estado para o novo estado informado"),
+    ERRO_CRIAR_PAGAMENTO(400, "Não foi possível criar o pagamento"),
     NAO_IMPLEMENTADO(500, "Funcionalidade não implementada");
 
     private final Integer httpStatusCode;

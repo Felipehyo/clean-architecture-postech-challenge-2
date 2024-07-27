@@ -8,14 +8,16 @@ import com.mercadopago.resources.payment.Payment;
 import com.postech.application.usecases.PedidoUseCases;
 import com.postech.domain.entities.Pagamento;
 import com.postech.domain.entities.Pedido;
-import com.postech.domain.enums.ErroPedidoEnum;
-import com.postech.domain.enums.EstadoPagamentoEnum;
+import com.postech.domain.enums.*;
+import com.postech.domain.exceptions.PagamentoException;
 import com.postech.domain.exceptions.PedidoException;
 import com.postech.domain.interfaces.PagamentoInterface;
 
 public class MercadoPagoUseCase implements PagamentoInterface {
 
     private final PedidoUseCases pedidoUseCases;
+
+    private static final TipoPagamentoEnum TIPO_PAGAMENTO = TipoPagamentoEnum.MERCADO_PAGO;
 
     public MercadoPagoUseCase(PedidoUseCases pedidoUseCases) {
         this.pedidoUseCases = pedidoUseCases;
@@ -28,7 +30,7 @@ public class MercadoPagoUseCase implements PagamentoInterface {
                     .transactionAmount(pedidoUseCases.calcularValorPedido(pedido))
                     .description("Pagamento do pedido " + pedido.getId())
                     .paymentMethodId("pix")
-                    .payer(PaymentPayerRequest.builder().email("alymaciel8@gmail.com").build())
+                    .payer(criaPagador(pedido))
                     .build();
 
             PaymentClient paymentClient = new PaymentClient();
@@ -37,15 +39,16 @@ public class MercadoPagoUseCase implements PagamentoInterface {
 
             return new Pagamento(null, payment.getTransactionAmount().doubleValue(),
                     EstadoPagamentoEnum.PENDENTE_PAGAMENTO, pedido, null, payment.getDateCreated().toLocalDate(),
-                    "pix", payment.getPointOfInteraction().getTransactionData().getQrCode());
+                    TipoMetodoPagamento.PIX, payment.getPointOfInteraction().getTransactionData().getQrCode(), TIPO_PAGAMENTO,
+                    payment.getId());
         } catch (Exception e){
-            throw new PedidoException(ErroPedidoEnum.ESTADO_INVALIDO);
+            throw new PagamentoException(ErroPagamentoEnum.ERRO_CRIAR_PAGAMENTO);
         }
     }
 
 
     private PaymentPayerRequest criaPagador(Pedido pedido) {
-        return PaymentPayerRequest.builder().id(pedido.getId().toString())
+        return PaymentPayerRequest.builder()
                 .email(pedido.getCliente().getEmail())
                 .firstName(pedido.getCliente().getNome())
                 .lastName("teste")

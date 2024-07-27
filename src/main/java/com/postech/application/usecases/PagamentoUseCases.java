@@ -1,10 +1,5 @@
 package com.postech.application.usecases;
 
-import com.mercadopago.client.common.IdentificationRequest;
-import com.mercadopago.client.payment.PaymentClient;
-import com.mercadopago.client.payment.PaymentCreateRequest;
-import com.mercadopago.client.payment.PaymentPayerRequest;
-import com.mercadopago.resources.payment.Payment;
 import com.postech.application.gateways.RepositorioDePagamentoGateway;
 import com.postech.domain.entities.Pagamento;
 import com.postech.domain.entities.Pedido;
@@ -14,6 +9,7 @@ import com.postech.domain.enums.EstadoPagamentoEnum;
 import com.postech.domain.exceptions.PagamentoException;
 import com.postech.domain.exceptions.PedidoException;
 import com.postech.domain.interfaces.PagamentoInterface;
+import com.postech.infra.dto.request.NotificacaoPagamentoDTO;
 
 
 public class PagamentoUseCases {
@@ -48,5 +44,26 @@ public class PagamentoUseCases {
         }
 
         return pagamento.getEstadoPagamento();
+    }
+
+    public Pagamento getPagamentoPorIdPagamento(Long id){
+        Pagamento pagamento = repositorio.consultaPagamentoPorIdPagamento(id);
+
+        if(pagamento == null){
+            throw new PagamentoException(ErroPagamentoEnum.PAGAMENTO_NAO_ENCONTRADO_POR_ID_PEDIDO);
+        }
+
+        return pagamento;
+    }
+
+    public Pagamento atualizaEstadoPagamento(NotificacaoPagamentoDTO notificacaoPagamentoDTO) {
+        Pagamento pagamento = this.getPagamentoPorIdPagamento(notificacaoPagamentoDTO.getPagamentoId());
+
+        pagamento.setEstadoPagamento(notificacaoPagamentoDTO.getEstadoPagamento());
+        pagamento.setDataPagamento(notificacaoPagamentoDTO.getDataAttPagamento());
+
+        Pagamento pagamentoAtualizado = repositorio.salvaPagamento(pagamento);
+
+        return pagamentoAtualizado;
     }
 }

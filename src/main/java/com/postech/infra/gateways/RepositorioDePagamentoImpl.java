@@ -30,4 +30,10 @@ public class RepositorioDePagamentoImpl implements RepositorioDePagamentoGateway
         return entity.map(mapper::paraDominio).orElse(null);
 
     }
+
+    @Override
+    public Pagamento consultaPagamentoPorIdPagamento(Long id) {
+        Optional<PagamentoEntity> entity = repositorio.getPagamentoEntityByPagamentoId(id);
+        return entity.map(mapper::paraDominio).orElse(null);
+    }
 }

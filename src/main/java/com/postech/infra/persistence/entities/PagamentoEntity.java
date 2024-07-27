@@ -37,5 +37,7 @@ public class PagamentoEntity {
 
     private String qrCode;
 
+    private Long pagamentoId;
+
 }
 
