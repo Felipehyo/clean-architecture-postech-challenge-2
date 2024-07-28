@@ -15,8 +15,8 @@ import org.springframework.context.annotation.Configuration;
 public class PagamentoConfiguration {
 
     @Bean
-    PagamentoUseCases pagamentoUseCases(RepositorioDePagamentoGateway repositorio, PedidoUseCases pedidoUseCases, PagamentoInterface pagamentoExternoInterface) {
-        return new PagamentoUseCases(pedidoUseCases, repositorio, pagamentoExternoInterface);
+    PagamentoUseCases pagamentoUseCases(RepositorioDePagamentoGateway repositorio, PagamentoInterface pagamentoExternoInterface) {
+        return new PagamentoUseCases(repositorio, pagamentoExternoInterface);
     }
 
     @Bean

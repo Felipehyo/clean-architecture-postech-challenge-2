@@ -14,14 +14,11 @@ import com.postech.infra.dto.request.NotificacaoPagamentoDTO;
 
 public class PagamentoUseCases {
 
-    private PedidoUseCases pedidoUseCases;
+    private final RepositorioDePagamentoGateway repositorio;
 
-    private RepositorioDePagamentoGateway repositorio;
+    private final PagamentoInterface pagamentoExternoUseCase;
 
-    private PagamentoInterface pagamentoExternoUseCase;
-
-    public PagamentoUseCases(PedidoUseCases pedidoUseCases, RepositorioDePagamentoGateway repositorio, PagamentoInterface pagamentoExternoUseCase) {
-        this.pedidoUseCases = pedidoUseCases;
+    public PagamentoUseCases(RepositorioDePagamentoGateway repositorio, PagamentoInterface pagamentoExternoUseCase) {
         this.repositorio = repositorio;
         this.pagamentoExternoUseCase = pagamentoExternoUseCase;
     }
@@ -56,14 +53,12 @@ public class PagamentoUseCases {
         return pagamento;
     }
 
-    public Pagamento atualizaEstadoPagamento(NotificacaoPagamentoDTO notificacaoPagamentoDTO) {
+    public void atualizaEstadoPagamento(NotificacaoPagamentoDTO notificacaoPagamentoDTO) {
         Pagamento pagamento = this.getPagamentoPorIdPagamento(notificacaoPagamentoDTO.getPagamentoId());
 
         pagamento.setEstadoPagamento(notificacaoPagamentoDTO.getEstadoPagamento());
         pagamento.setDataPagamento(notificacaoPagamentoDTO.getDataAttPagamento());
 
-        Pagamento pagamentoAtualizado = repositorio.salvaPagamento(pagamento);
-
-        return pagamentoAtualizado;
+        repositorio.salvaPagamento(pagamento);
     }
 }
