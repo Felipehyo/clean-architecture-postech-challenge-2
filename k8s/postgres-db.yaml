@@ -1,0 +1,34 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: postgres-db
+  labels:
+    app: postgres-db
+spec:
+  containers:
+    - name: postgres-db
+      image: postgres:16.3
+      ports:
+        - containerPort: 5432
+      env:
+        - name: POSTGRES_DB
+          valueFrom:
+            secretKeyRef:
+              name: secret-postgres-db
+              key: postgres_db
+        - name: POSTGRES_USER
+          valueFrom:
+            secretKeyRef:
+              name: secret-postgres-db
+              key: postgres_user
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: secret-postgres-db
+              key: postgres_password
+      volumeMounts:
+        - name: db-data-volume
+          mountPath: /data
+  volumes:
+    - name: db-data-volume
+      emptyDir: {}

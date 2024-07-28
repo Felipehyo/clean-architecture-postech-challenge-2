@@ -37,3 +37,18 @@ Dentro do Projeto no diretório "postman" há um arquivo com uma collection post
 ```
 ./postman/Pos_Tech-Arquitetura_Hexagonal-Lanchonete
 ```
+
+## Dockerhub com a imagem da aplicação
+```url
+https://hub.docker.com/repository/docker/lpugliese/fiap-clean-restaurant-application/general
+```
+
+## CMDs para push da imagem para o Dockerhub
+```bash
+docker build -t lpugliese/fiap-clean-restaurant-application .
+
+docker push lpugliese/fiap-clean-restaurant-application:latest
+```
+
+## Arquitetura do k8s
+![architecture-k8s.png](architecture-k8s.png)
