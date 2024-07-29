@@ -1,8 +1,8 @@
 package com.postech.domain.interfaces;
 
-import com.postech.infra.dto.request.NotificacaoPagamentoDTO;
+import com.postech.application.utils.NotificacaoPagamento;
 
 public interface NotificacaoExternoInterface {
 
-    public NotificacaoPagamentoDTO geraNotificaoPagamentoDTO(String jsonNotificacao);
+    public NotificacaoPagamento geraNotificaoPagamento(String jsonNotificacao);
 }

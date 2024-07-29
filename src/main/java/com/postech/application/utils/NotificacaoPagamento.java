@@ -1,4 +1,4 @@
-package com.postech.infra.dto.request;
+package com.postech.application.utils;
 
 import com.postech.domain.enums.EstadoPagamentoEnum;
 import lombok.AllArgsConstructor;
@@ -10,7 +10,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class NotificacaoPagamentoDTO {
+public class NotificacaoPagamento {
 
     private EstadoPagamentoEnum estadoPagamento;
 

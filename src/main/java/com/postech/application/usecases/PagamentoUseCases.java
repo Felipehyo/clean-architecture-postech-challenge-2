@@ -9,7 +9,7 @@ import com.postech.domain.enums.EstadoPagamentoEnum;
 import com.postech.domain.exceptions.PagamentoException;
 import com.postech.domain.exceptions.PedidoException;
 import com.postech.domain.interfaces.PagamentoInterface;
-import com.postech.infra.dto.request.NotificacaoPagamentoDTO;
+import com.postech.application.utils.NotificacaoPagamento;
 
 
 public class PagamentoUseCases {
@@ -53,11 +53,11 @@ public class PagamentoUseCases {
         return pagamento;
     }
 
-    public void atualizaEstadoPagamento(NotificacaoPagamentoDTO notificacaoPagamentoDTO) {
-        Pagamento pagamento = this.getPagamentoPorIdPagamento(notificacaoPagamentoDTO.getPagamentoId());
+    public void atualizaEstadoPagamento(NotificacaoPagamento notificacaoPagamento) {
+        Pagamento pagamento = this.getPagamentoPorIdPagamento(notificacaoPagamento.getPagamentoId());
 
-        pagamento.setEstadoPagamento(notificacaoPagamentoDTO.getEstadoPagamento());
-        pagamento.setDataPagamento(notificacaoPagamentoDTO.getDataAttPagamento());
+        pagamento.setEstadoPagamento(notificacaoPagamento.getEstadoPagamento());
+        pagamento.setDataPagamento(notificacaoPagamento.getDataAttPagamento());
 
         repositorio.salvaPagamento(pagamento);
     }

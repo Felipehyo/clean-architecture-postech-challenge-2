@@ -4,13 +4,13 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.postech.domain.enums.EstadoPagamentoEnum;
 import com.postech.domain.interfaces.NotificacaoExternoInterface;
-import com.postech.infra.dto.request.NotificacaoPagamentoDTO;
+import com.postech.application.utils.NotificacaoPagamento;
 import com.postech.infra.mercadopago.dto.NotificacaoMercadoPagoDTO;
 
 public class NotificacaoMercadoPagoUseCase implements NotificacaoExternoInterface {
 
     @Override
-    public NotificacaoPagamentoDTO geraNotificaoPagamentoDTO(String jsonNotificacao) {
+    public NotificacaoPagamento geraNotificaoPagamento(String jsonNotificacao) {
 
         ObjectMapper objectMapper  = new ObjectMapper();
 
@@ -23,9 +23,9 @@ public class NotificacaoMercadoPagoUseCase implements NotificacaoExternoInterfac
                 estadoPagamentoEnum = EstadoPagamentoEnum.PAGO;
             }
 
-            return new NotificacaoPagamentoDTO(estadoPagamentoEnum, notificacaoMercadoPagoDTO.getDataCriada(), notificacaoMercadoPagoDTO.getPagamentoId());
+            return new NotificacaoPagamento(estadoPagamentoEnum, notificacaoMercadoPagoDTO.getDataCriada(), notificacaoMercadoPagoDTO.getPagamentoId());
         } catch (JsonProcessingException e) {
-            return new NotificacaoPagamentoDTO(EstadoPagamentoEnum.PENDENTE_PAGAMENTO,  null, null);
+            return new NotificacaoPagamento(EstadoPagamentoEnum.PENDENTE_PAGAMENTO,  null, null);
         }
     }
 }

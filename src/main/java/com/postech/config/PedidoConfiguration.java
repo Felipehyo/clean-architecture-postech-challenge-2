@@ -22,14 +22,4 @@ public class PedidoConfiguration {
         return new RepositorioDeProdutoGatewayImpl(repository, mapper);
     }
 
-    @Bean
-    CriarPedidoUseCases criarPedidoUseCases(ProdutoUseCases produtoUseCases, ClienteUseCases clienteUseCases, PedidoUseCases pedidoUseCases){
-        return new CriarPedidoUseCases(produtoUseCases, clienteUseCases, pedidoUseCases);
-    }
-
-    @Bean
-    AtualizarPedidoUseCases atualizarPedidoUseCases(RepositorioDePedidoGateway repositorioDePedidoGateway){
-        return new AtualizarPedidoUseCases(repositorioDePedidoGateway);
-    }
-
 }

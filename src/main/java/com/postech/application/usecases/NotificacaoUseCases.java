@@ -2,7 +2,7 @@ package com.postech.application.usecases;
 
 import com.postech.domain.enums.EstadoPagamentoEnum;
 import com.postech.domain.interfaces.NotificacaoExternoInterface;
-import com.postech.infra.dto.request.NotificacaoPagamentoDTO;
+import com.postech.application.utils.NotificacaoPagamento;
 
 public class NotificacaoUseCases {
 
@@ -16,12 +16,12 @@ public class NotificacaoUseCases {
     }
 
     public void atualizaNotificacaoPagamento(String jsonNotificacao) {
-        NotificacaoPagamentoDTO notificacaoPagamentoDTO = notificacaoExternoUseCase.geraNotificaoPagamentoDTO(jsonNotificacao);
+        NotificacaoPagamento notificacaoPagamento = notificacaoExternoUseCase.geraNotificaoPagamento(jsonNotificacao);
 
-        if(notificacaoPagamentoDTO.getEstadoPagamento().equals(EstadoPagamentoEnum.PENDENTE_PAGAMENTO)){
+        if(notificacaoPagamento.getEstadoPagamento().equals(EstadoPagamentoEnum.PENDENTE_PAGAMENTO)){
             return;
         }
 
-        pagamentoUseCases.atualizaEstadoPagamento(notificacaoPagamentoDTO);
+        pagamentoUseCases.atualizaEstadoPagamento(notificacaoPagamento);
     }
 }
