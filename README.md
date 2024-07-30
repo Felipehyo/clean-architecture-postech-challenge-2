@@ -17,7 +17,7 @@ https://miro.com/app/board/uXjVKSt4Gq8=/?share_link_id=968579577663
 
 1 - Clonar o projeto
 ```bash
-$ git clone https://github.com/ViniNepo/hexagonal-architecture-postech-challenge.git
+$ git clone https://github.com/Felipehyo/clean-architecture-postech-challenge-2.git
 ```
 2 - Rodar comando no diretório raiz do projeto para subir container com instâncias da aplicação e do banco Postgre
 ```bash
@@ -92,7 +92,7 @@ teremos uma única chamada no sistema criando o pedido.
 Após isso podemos realizar o checkout pelo endpoint: 
 
 ```url
-PATCH localhost:8080/lanchonete/v1/pedidos/{PEDIDO_ID}/fake-checkout
+PATCH localhost:8080/lanchonete/v1/pedidos/{PEDIDO_ID}/checkout
 ```
 
 Além disso outras funções como consultar um pedido ou todos, atualizar o estado de um pedido ou deletar. Essas chamadas 
