@@ -11,5 +11,5 @@ public interface PagamentoRepository extends JpaRepository<PagamentoEntity, Long
 
 
     Optional<PagamentoEntity> getPagamentoEntityByPedidoId(Long id);
-    Optional<PagamentoEntity> getPagamentoEntityByPagamentoId(Long id);
+    Optional<PagamentoEntity> getPagamentoEntityByPagamentoId(String id);
 }

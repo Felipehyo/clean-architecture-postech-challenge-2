@@ -10,27 +10,30 @@ import com.postech.domain.entities.Pagamento;
 import com.postech.domain.entities.Pedido;
 import com.postech.domain.enums.*;
 import com.postech.domain.exceptions.PagamentoException;
-import com.postech.domain.exceptions.PedidoException;
 import com.postech.domain.interfaces.PagamentoInterface;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
+import java.time.ZoneOffset;
 
 public class MercadoPagoUseCase implements PagamentoInterface {
 
-    private final PedidoUseCases pedidoUseCases;
-
     private static final TipoPagamentoEnum TIPO_PAGAMENTO = TipoPagamentoEnum.MERCADO_PAGO;
 
-    public MercadoPagoUseCase(PedidoUseCases pedidoUseCases) {
-        this.pedidoUseCases = pedidoUseCases;
+    public MercadoPagoUseCase() {
     }
 
     @Override
     public Pagamento criarPagamento(Pedido pedido) {
         try{
             PaymentCreateRequest paymentCreateRequest = PaymentCreateRequest.builder()
-                    .transactionAmount(pedidoUseCases.calcularValorPedido(pedido))
+                    .transactionAmount(pedido.getValorPedido(pedido))
                     .description("Pagamento do pedido " + pedido.getId())
                     .paymentMethodId("pix")
                     .payer(criaPagador(pedido))
+                    .dateOfExpiration(OffsetDateTime.now().plusMinutes(15))
+                    .notificationUrl(null)
                     .build();
 
             PaymentClient paymentClient = new PaymentClient();
@@ -40,7 +43,7 @@ public class MercadoPagoUseCase implements PagamentoInterface {
             return new Pagamento(null, payment.getTransactionAmount().doubleValue(),
                     EstadoPagamentoEnum.PENDENTE_PAGAMENTO, pedido, null, payment.getDateCreated().toLocalDate(),
                     TipoMetodoPagamento.PIX, payment.getPointOfInteraction().getTransactionData().getQrCode(), TIPO_PAGAMENTO,
-                    payment.getId());
+                    payment.getId().toString());
         } catch (Exception e){
             throw new PagamentoException(ErroPagamentoEnum.ERRO_CRIAR_PAGAMENTO);
         }

@@ -28,14 +28,14 @@ public interface PagamentoResource {
     ResponseEntity<Object> criarPagamento(@RequestBody PagamentoRequestDTO pagamentoRequestDTO);
 
 
-    @Operation(summary = "Pegar estado pagamento", method = "GET", description = "Recurso para criar um pagamento")
+    @Operation(summary = "Buscar estado pagamento", method = "GET", description = "Recurso para buscar um pagamento")
     @ApiResponses(value = {
             @ApiResponse(description = "Estado do pagamento encontrado com sucesso", responseCode = "200", content = @Content(mediaType = "application/json", schema = @Schema(implementation = PagamentoRequestDTO.class))),
             @ApiResponse(responseCode = "400", description = "Erro ao procurar estado do pagamento", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErroDTO.class))),
     })
     @GetMapping(consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    ResponseEntity<Object> getEstadoPagamento(PagamentoRequestDTO pagamentoRequestDTO);
+    ResponseEntity<Object> getEstadoPagamento(@RequestBody PagamentoRequestDTO pagamentoRequestDTO);
 
 
 }

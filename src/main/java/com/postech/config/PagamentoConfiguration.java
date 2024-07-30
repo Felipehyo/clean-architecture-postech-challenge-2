@@ -25,8 +25,8 @@ public class PagamentoConfiguration {
     }
 
     @Bean
-    PagamentoInterface pagamentoExterno(PedidoUseCases pedidoUseCases){
-        return new MercadoPagoUseCase(pedidoUseCases);
+    PagamentoInterface pagamentoInterface(){
+        return new MercadoPagoUseCase();
     }
 
 

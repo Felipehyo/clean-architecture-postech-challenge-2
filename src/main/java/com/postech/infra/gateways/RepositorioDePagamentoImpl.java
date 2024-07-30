@@ -32,7 +32,7 @@ public class RepositorioDePagamentoImpl implements RepositorioDePagamentoGateway
     }
 
     @Override
-    public Pagamento consultaPagamentoPorIdPagamento(Long id) {
+    public Pagamento consultaPagamentoPorIdPagamento(String id) {
         Optional<PagamentoEntity> entity = repositorio.getPagamentoEntityByPagamentoId(id);
         return entity.map(mapper::paraDominio).orElse(null);
     }

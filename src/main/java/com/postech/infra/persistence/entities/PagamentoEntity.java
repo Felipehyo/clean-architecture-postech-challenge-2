@@ -2,6 +2,7 @@ package com.postech.infra.persistence.entities;
 
 import com.postech.domain.entities.Pedido;
 import com.postech.domain.enums.EstadoPagamentoEnum;
+import com.postech.domain.enums.TipoPagamentoEnum;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -37,7 +38,11 @@ public class PagamentoEntity {
 
     private String qrCode;
 
-    private Long pagamentoId;
+    private String pagamentoId;
+
+    @Enumerated(EnumType.STRING)
+    private TipoPagamentoEnum tipoPagamento;
+
 
 }
 

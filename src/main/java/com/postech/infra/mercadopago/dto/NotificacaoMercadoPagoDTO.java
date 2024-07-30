@@ -21,7 +21,7 @@ public class NotificacaoMercadoPagoDTO {
     @JsonProperty("date_created")
     private LocalDate dataCriada;
 
-    private Long pagamentoId;
+    private String pagamentoId;
 
     @JsonCreator
     public NotificacaoMercadoPagoDTO(@JsonProperty("action") String acao,
@@ -29,7 +29,7 @@ public class NotificacaoMercadoPagoDTO {
                   @JsonProperty("data") JsonNode data) {
         this.acao = acao;
         this.dataCriada = dataCriada.toLocalDate();
-        this.pagamentoId = data != null ? data.get("id").asLong() : null;
+        this.pagamentoId = data != null ? data.get("id").asText() : null;
     }
 
 }

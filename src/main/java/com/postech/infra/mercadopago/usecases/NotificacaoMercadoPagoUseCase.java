@@ -2,6 +2,8 @@ package com.postech.infra.mercadopago.usecases;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.postech.domain.enums.EstadoPagamentoEnum;
 import com.postech.domain.interfaces.NotificacaoExternoInterface;
 import com.postech.application.utils.NotificacaoPagamento;
@@ -13,6 +15,8 @@ public class NotificacaoMercadoPagoUseCase implements NotificacaoExternoInterfac
     public NotificacaoPagamento geraNotificaoPagamento(String jsonNotificacao) {
 
         ObjectMapper objectMapper  = new ObjectMapper();
+        objectMapper.registerModule(new JavaTimeModule());
+        objectMapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
 
         try{
             NotificacaoMercadoPagoDTO notificacaoMercadoPagoDTO = objectMapper.readValue(jsonNotificacao, NotificacaoMercadoPagoDTO.class);

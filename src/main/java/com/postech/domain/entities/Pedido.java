@@ -4,6 +4,7 @@ import com.postech.domain.exceptions.DominioException;
 import com.postech.domain.enums.EstadoPedidoEnum;
 import com.postech.domain.utils.ValidacaoUtils;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -59,4 +60,11 @@ public class Pedido {
         this.pedidosProdutos = pedidosProdutos;
     }
 
+    public BigDecimal getValorPedido(Pedido pedido) {
+        List<PedidoProduto> pedidosProdutos = pedido.getPedidosProdutos();
+
+        double sum = pedidosProdutos.stream().mapToDouble(x -> x.getProduto().getPreco() * x.getQuantidade()).sum();
+
+        return BigDecimal.valueOf(sum);
+    }
 }

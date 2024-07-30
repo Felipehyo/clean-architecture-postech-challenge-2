@@ -28,7 +28,7 @@ public class PagamentoUseCases {
             Pagamento pagamento = pagamentoExternoUseCase.criarPagamento(pedido);
             return repositorio.salvaPagamento(pagamento);
         }catch (Exception e){
-            throw new PedidoException(ErroPedidoEnum.ESTADO_INVALIDO);
+            throw new PagamentoException(ErroPagamentoEnum.ERRO_CRIAR_PAGAMENTO);
         }
     }
 
@@ -43,7 +43,7 @@ public class PagamentoUseCases {
         return pagamento.getEstadoPagamento();
     }
 
-    public Pagamento getPagamentoPorIdPagamento(Long id){
+    public Pagamento getPagamentoPorIdPagamento(String id){
         Pagamento pagamento = repositorio.consultaPagamentoPorIdPagamento(id);
 
         if(pagamento == null){
