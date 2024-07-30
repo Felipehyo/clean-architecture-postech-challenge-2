@@ -9,7 +9,7 @@ import org.apache.commons.lang3.StringUtils;
 
 import java.util.List;
 
-public class ProdutoUseCases {
+public class ProdutoUseCases  {
 
     private final RepositorioDeProdutoGateway repositorio;
 

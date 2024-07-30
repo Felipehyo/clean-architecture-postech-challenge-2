@@ -98,6 +98,12 @@
             <artifactId>mapstruct-processor</artifactId>
             <version>1.5.5.Final</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.mercadopago</groupId>
+            <artifactId>sdk-java</artifactId>
+            <version>2.1.24</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -108,5 +114,7 @@
             </plugin>
         </plugins>
     </build>
+
+
 
 </project>

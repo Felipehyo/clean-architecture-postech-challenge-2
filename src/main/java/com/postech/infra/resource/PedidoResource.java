@@ -46,12 +46,12 @@ public interface PedidoResource {
     @GetMapping(value = "/{id}/notificar-estado", produces = MediaType.APPLICATION_JSON_VALUE)
     ResponseEntity<Object> notificarPedidoEstado(@PathVariable Long id);
 
-    @Operation(summary = "Consultar todos os pedidos", method = "GET", description = "Recurso para consultar todos os pedidos")
+    @Operation(summary = "Listar os pedidos", method = "GET", description = "Recurso para listar os pedidos")
     @ApiResponses(value = {
-            @ApiResponse(description = "Pedido criado com sucesso", responseCode = "200", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Pedido.class))),
+            @ApiResponse(description = "Pedidos encontrados com sucesso", responseCode = "200", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Pedido.class))),
     })
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    ResponseEntity<Object> consultarTodosPedidos();
+    ResponseEntity<Object> listarPedidos();
 
     @Operation(summary = "Atualizar estado do pedido", method = "PATCH", description = "Recurso para atualizar estado de um pedido, o estado só pode ser alterado respeitando a seguinte ordem " +
             "[1 - PENDENTE_PAGAMENTO | 2 - PAGO | 3 - RECEBIDO | 4 - PREPARANDO | 5 - PRONTO | 6 - FINALIZADO | 7 - CANCELADO]. A partir de qualquer estado será possível alterar para o estado CANCELADO, com excessão do estado FINALIZADO.")

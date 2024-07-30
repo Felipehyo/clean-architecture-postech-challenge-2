@@ -2,10 +2,9 @@ package com.postech.infra.controller;
 
 import com.postech.application.usecases.PedidoUseCases;
 import com.postech.domain.entities.Pedido;
-import com.postech.domain.enums.ErroPedidoEnum;
 import com.postech.domain.enums.EstadoPedidoEnum;
-import com.postech.domain.exceptions.PedidoException;
 import com.postech.infra.dto.request.PedidoRequestDTO;
+import com.postech.infra.dto.response.CheckoutResponseDTO;
 import com.postech.infra.mappers.PedidoMapper;
 import com.postech.infra.resource.PedidoResource;
 import org.springframework.http.HttpStatus;
@@ -20,6 +19,7 @@ public class PedidoController implements PedidoResource {
     private final PedidoUseCases useCases;
     private final PedidoMapper mapper;
 
+
     public PedidoController(PedidoUseCases useCases, PedidoMapper mapper) {
         this.useCases = useCases;
         this.mapper = mapper;
@@ -27,8 +27,12 @@ public class PedidoController implements PedidoResource {
 
     @Override
     public ResponseEntity<Object> criarPedido(PedidoRequestDTO pedidoDTO) {
-        Pedido pedido = useCases.cadastrar(mapper.paraDominio(pedidoDTO));
-        return ResponseEntity.status(HttpStatus.CREATED).body(mapper.paraResponseDto(pedido));
+
+        Pedido pedido = useCases.criaPedido(pedidoDTO);
+
+        Pedido pedidoSalvo = useCases.salvarPedido(pedido);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(mapper.paraResponseDto(pedidoSalvo));
     }
 
     @Override
@@ -40,12 +44,13 @@ public class PedidoController implements PedidoResource {
     @Override
     public ResponseEntity<Object> notificarPedidoEstado(Long id) {
         Pedido pedido = useCases.notificaEstado(id);
-        return ResponseEntity.ok().body(pedido.getEstado());//todo
+        return ResponseEntity.ok().body(pedido.getEstado());
     }
 
+
     @Override
-    public ResponseEntity<Object> consultarTodosPedidos() {
-        List<Pedido> pedidos = useCases.consultaTodosOsPedidos();
+    public ResponseEntity<Object> listarPedidos() {
+        List<Pedido> pedidos = useCases.listarPedidos();
         return ResponseEntity.ok().body(mapper.paraDTOLista(pedidos));
     }
 
@@ -56,10 +61,9 @@ public class PedidoController implements PedidoResource {
     }
 
     @Override
-    public ResponseEntity<Object> checkout(Long id) { //todo implementar
-        useCases.checkout(id);
-        throw new PedidoException(ErroPedidoEnum.NAO_IMPLEMENTADO);
-//        return ResponseEntity.ok().body(new FakeCheckoutDTO("Pedido realizado e enviado para a fila da cozinha"));
+    public ResponseEntity<Object> checkout(Long id) {
+        Pedido checkout = useCases.checkout(id);
+        return ResponseEntity.ok().body(new CheckoutResponseDTO("Pedido realizado e enviado para a fila da cozinha", mapper.paraResponseDto(checkout)));
     }
 
     @Override

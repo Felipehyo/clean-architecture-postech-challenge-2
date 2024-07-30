@@ -10,6 +10,8 @@ public class PedidoProduto {
 
     private Integer quantidade;
 
+    public PedidoProduto() {
+    }
 
     public PedidoProduto(Long id, Pedido pedido, Produto produto, Integer quantidade) {
         this.id = id;
