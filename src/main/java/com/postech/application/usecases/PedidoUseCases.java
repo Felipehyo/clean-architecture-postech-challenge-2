@@ -47,14 +47,6 @@ public class PedidoUseCases {
         return pedido;
     }
 
-    public BigDecimal calcularValorPedido(Pedido pedido) {
-        List<PedidoProduto> pedidosProdutos = pedido.getPedidosProdutos();
-
-        double sum = pedidosProdutos.stream().mapToDouble(x -> x.getProduto().getPreco() * x.getQuantidade()).sum();
-
-        return BigDecimal.valueOf(sum);
-    }
-
     public Pedido atualizaEstadoPorIdDoPedido(Long idDoPedido, EstadoPedidoEnum estado) {
         Pedido pedido = this.consultaPorId(idDoPedido);
 

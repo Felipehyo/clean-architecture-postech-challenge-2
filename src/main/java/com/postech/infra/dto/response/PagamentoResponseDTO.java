@@ -2,7 +2,10 @@ package com.postech.infra.dto.response;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.postech.domain.entities.Pedido;
 import com.postech.domain.enums.EstadoPagamentoEnum;
+import com.postech.domain.enums.TipoMetodoPagamento;
+import com.postech.domain.enums.TipoPagamentoEnum;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -27,10 +30,12 @@ public class PagamentoResponseDTO {
 
     private LocalDate dataCriacaoPagamento;
 
-    private String metodoPagamento;
+    private TipoPagamentoEnum tipoPagamento;
+
+    private TipoMetodoPagamento metodoPagamento;
 
     private String qrCode;
 
-
+    private Long pagamentoId;
 
 }
