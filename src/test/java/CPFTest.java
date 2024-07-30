@@ -1,27 +1,23 @@
 
 import com.postech.domain.entities.CPF;
-import org.junit.jupiter.api.Test;
+import com.postech.domain.exceptions.DominioException;
+import org.junit.Test;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class CPFTest {
 
     @Test
-    void aoUtilizarUmCPFRealOhMesmoDeveSerIdentificadoComoValido() {
+    public void aoUtilizarUmCPFRealOhMesmoDeveSerIdentificadoComoValido() {
         String numeroCpf = "41112017097";
 
-        CPF cpf = new CPF(numeroCpf);
-
-        assertThat(cpf.validar()).isTrue();
+        new CPF(numeroCpf);
     }
 
-    @Test
-    void aoUtilizarUmCPFFalsoOhMesmoDeveSerIdentificadoComoInvalido() {
+    @Test(expected = DominioException.class)
+    public void aoUtilizarUmCPFFalsoOhMesmoDeveSerIdentificadoComoInvalido() {
         String numeroCpf = "41112017091";
 
-        CPF cpf = new CPF(numeroCpf);
-
-        assertThat(cpf.validar()).isFalse();
+        new CPF(numeroCpf);
     }
 
 }

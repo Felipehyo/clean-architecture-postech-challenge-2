@@ -103,14 +103,14 @@ public class PedidoUseCases {
         return ordenarListarPedidos(pedidosFiltrados);
     }
 
-    private List<Pedido> ordenarListarPedidos(List<Pedido> pedidos) {
+    protected List<Pedido> ordenarListarPedidos(List<Pedido> pedidos) {
         return pedidos.stream()
                 .sorted(Comparator.comparing((Pedido p) -> p.getEstado().getOrdem(), Comparator.reverseOrder())
                         .thenComparing(Pedido::getId))
                 .toList();
     }
 
-    public List<Pedido> filtrarPedidos(List<Pedido> pedidos, List<EstadoPedidoEnum> estadosParaRetirar){
+    protected List<Pedido> filtrarPedidos(List<Pedido> pedidos, List<EstadoPedidoEnum> estadosParaRetirar){
         return pedidos.stream().filter(x -> !estadosParaRetirar.contains(x.getEstado())).collect(Collectors.toList());
     }
 
