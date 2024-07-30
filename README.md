@@ -38,7 +38,7 @@ Dentro do Projeto no diretório "postman" há um arquivo com uma collection post
 ./postman/Pos_Tech-Arquitetura_Hexagonal-Lanchonete
 ```
 
-## Como realizar um pedido
+## Identificação do cliente
 
 Para criar um pedido nós podemos iniciar de duas formas, sendo elas com ou sem identificação do cliente.
 
