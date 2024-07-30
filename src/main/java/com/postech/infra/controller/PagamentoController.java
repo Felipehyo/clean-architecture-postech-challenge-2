@@ -41,6 +41,6 @@ public class PagamentoController implements PagamentoResource {
 
         EstadoPagamentoEnum estadoPagamento = useCases.getStatusPagamento(pagamentoRequestDTO.getIdPedido());
 
-        return ResponseEntity.status(HttpStatus.CREATED).body(estadoPagamento);
+        return ResponseEntity.ok().body("O estado do pagamento informado é: " + estadoPagamento);
     }
 }

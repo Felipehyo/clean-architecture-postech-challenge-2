@@ -36,6 +36,6 @@ public class PagamentoResponseDTO {
 
     private String qrCode;
 
-    private Long pagamentoId;
+    private String pagamentoId;
 
 }

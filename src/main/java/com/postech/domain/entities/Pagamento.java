@@ -28,10 +28,10 @@ public class Pagamento {
 
     private String qrCode;
 
-    private Long pagamentoId;
+    private String pagamentoId;
 
 
-    public Pagamento(Long id, Double valor, EstadoPagamentoEnum estadoPagamento, Pedido pedido, LocalDate dataPagamento, LocalDate dataCriacaoPagamento, TipoMetodoPagamento metodoPagamento, String qrCode, TipoPagamentoEnum tipoPagamento, Long pagamentoId) {
+    public Pagamento(Long id, Double valor, EstadoPagamentoEnum estadoPagamento, Pedido pedido, LocalDate dataPagamento, LocalDate dataCriacaoPagamento, TipoMetodoPagamento metodoPagamento, String qrCode, TipoPagamentoEnum tipoPagamento, String pagamentoId) {
         this.id = id;
         this.valor = valor;
         this.estadoPagamento = estadoPagamento;
@@ -56,7 +56,7 @@ public class Pagamento {
     }
 
 
-    public Long getPagamentoId() {
+    public String getPagamentoId() {
         return pagamentoId;
     }
 

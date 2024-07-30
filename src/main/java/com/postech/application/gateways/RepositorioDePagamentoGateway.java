@@ -8,6 +8,6 @@ public interface RepositorioDePagamentoGateway {
 
     Pagamento consultaPagamentoPorIdPedido(Long id);
 
-    Pagamento consultaPagamentoPorIdPagamento(Long id);
+    Pagamento consultaPagamentoPorIdPagamento(String id);
 
 }

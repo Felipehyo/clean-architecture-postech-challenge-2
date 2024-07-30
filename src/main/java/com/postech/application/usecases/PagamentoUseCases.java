@@ -43,7 +43,7 @@ public class PagamentoUseCases {
         return pagamento.getEstadoPagamento();
     }
 
-    public Pagamento getPagamentoPorIdPagamento(Long id){
+    public Pagamento getPagamentoPorIdPagamento(String id){
         Pagamento pagamento = repositorio.consultaPagamentoPorIdPagamento(id);
 
         if(pagamento == null){

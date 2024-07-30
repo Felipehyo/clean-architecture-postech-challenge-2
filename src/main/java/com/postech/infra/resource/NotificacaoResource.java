@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/noticacoes")
+@RequestMapping("/notificacoes")
 @Tag(name = "Notificacao", description = "Recursos relacionados a notificacao")
 public interface NotificacaoResource {
 

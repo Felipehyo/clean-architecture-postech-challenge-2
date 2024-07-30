@@ -16,5 +16,5 @@ public class NotificacaoPagamento {
 
     private LocalDate dataAttPagamento;
 
-    private Long pagamentoId;
+    private String pagamentoId;
 }

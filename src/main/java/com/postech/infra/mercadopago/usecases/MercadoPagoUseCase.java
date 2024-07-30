@@ -43,7 +43,7 @@ public class MercadoPagoUseCase implements PagamentoInterface {
             return new Pagamento(null, payment.getTransactionAmount().doubleValue(),
                     EstadoPagamentoEnum.PENDENTE_PAGAMENTO, pedido, null, payment.getDateCreated().toLocalDate(),
                     TipoMetodoPagamento.PIX, payment.getPointOfInteraction().getTransactionData().getQrCode(), TIPO_PAGAMENTO,
-                    payment.getId());
+                    payment.getId().toString());
         } catch (Exception e){
             throw new PagamentoException(ErroPagamentoEnum.ERRO_CRIAR_PAGAMENTO);
         }

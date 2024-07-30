@@ -38,7 +38,7 @@ public class PagamentoEntity {
 
     private String qrCode;
 
-    private Long pagamentoId;
+    private String pagamentoId;
 
     @Enumerated(EnumType.STRING)
     private TipoPagamentoEnum tipoPagamento;
