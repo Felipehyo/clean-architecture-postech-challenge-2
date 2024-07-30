@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: restaurant-application
+spec:
+  type: NodePort
+  ports:
+    - nodePort: 31100
+      port: 80
+      targetPort: 8080
+  selector:
+    app: deployment-restaurant-application
+
+
+    
+

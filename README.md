@@ -17,7 +17,7 @@ https://miro.com/app/board/uXjVKSt4Gq8=/?share_link_id=968579577663
 
 1 - Clonar o projeto
 ```bash
-$ git clone https://github.com/ViniNepo/hexagonal-architecture-postech-challenge.git
+$ git clone https://github.com/Felipehyo/clean-architecture-postech-challenge-2.git
 ```
 2 - Rodar comando no diretório raiz do projeto para subir container com instâncias da aplicação e do banco Postgre
 ```bash
@@ -159,3 +159,17 @@ PATCH localhost:8080/lanchonete/v1/produtos
 ```
 
 Para mais funções como listar por ID, listar todos, por categoria, atualizar e deletar estão dispononiveis pela collection.
+## Dockerhub com a imagem da aplicação
+```url
+https://hub.docker.com/repository/docker/lpugliese/fiap-clean-restaurant-application/general
+```
+
+## CMDs para push da imagem para o Dockerhub
+```bash
+docker build -t lpugliese/fiap-clean-restaurant-application .
+
+docker push lpugliese/fiap-clean-restaurant-application:latest
+```
+
+## Arquitetura do k8s
+![architecture-k8s.png](architecture-k8s.png)
