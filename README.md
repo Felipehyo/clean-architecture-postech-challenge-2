@@ -114,3 +114,17 @@ PATCH localhost:8080/lanchonete/v1/produtos
 ```
 
 Para mais funções como listar por ID, listar todos, por categoria, atualizar e deletar estão dispononiveis pela collection.
+## Dockerhub com a imagem da aplicação
+```url
+https://hub.docker.com/repository/docker/lpugliese/fiap-clean-restaurant-application/general
+```
+
+## CMDs para push da imagem para o Dockerhub
+```bash
+docker build -t lpugliese/fiap-clean-restaurant-application .
+
+docker push lpugliese/fiap-clean-restaurant-application:latest
+```
+
+## Arquitetura do k8s
+![architecture-k8s.png](architecture-k8s.png)
