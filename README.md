@@ -173,3 +173,6 @@ docker push lpugliese/fiap-clean-restaurant-application:latest
 
 ## Arquitetura do k8s
 ![architecture-k8s.png](architecture-k8s.png)
+
+## Video da arquitetura
+https://www.youtube.com/watch?v=dx0dzh5TJpE
