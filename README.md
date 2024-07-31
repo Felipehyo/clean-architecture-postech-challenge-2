@@ -38,7 +38,7 @@ Dentro do Projeto no diretório "postman" há um arquivo com uma collection post
 ./postman/Pos_Tech-Arquitetura_Hexagonal-Lanchonete
 ```
 
-## Como realizar um pedido
+## Identificação do cliente
 
 Para criar um pedido nós podemos iniciar de duas formas, sendo elas com ou sem identificação do cliente.
 
@@ -89,17 +89,62 @@ POST localhost:8080/lanchonete/v1/pedidos
 Obs: Pensando que o frontend terá registrado todas as opções que o cliente escolheu na tela e enviado para o backend nós 
 teremos uma única chamada no sistema criando o pedido.
 
-Após isso podemos realizar o checkout pelo endpoint: 
 
-```url
-PATCH localhost:8080/lanchonete/v1/pedidos/{PEDIDO_ID}/checkout
-```
-
-Além disso outras funções como consultar um pedido ou todos, atualizar o estado de um pedido ou deletar. Essas chamadas 
+Além disso outras funções como consultar um pedido ou todos, atualizar o estado de um pedido ou deletar. Essas chamadas
 estão disponíveis no collection do Postman.
 
+Após isso podemos avançar com o pagamento.
+
+## Pagamento
+
+Após o pedido ser criado o front irá solicitar o pagamento que será realziado através do endpoint de criação de pagamento:
+
+```url
+POST localhost:8080/lanchonete/v1/pagamento
+{
+    "idPedido": {ID_PEDIDO},
+    "tipoPagamento": "MERCADO_PAGO"
+}
+```
+
+
+Após isso será necesssário simular o Webhook para envio de notificação da confirmação do pagamento através do endopoint:
+
+```url
+POST localhost:8080/lanchonete/v1/notificacoes/mercadopago
+{
+    "action": "payment.updated",
+    "data_created": "2024-07-29T10:00:00",
+    "data": {
+        "id": "8369909833"
+    }
+}
+```
+
+A partir desse momento o pedido irá processegui para a etapa de preparação no sistema. Porém caso queira consultar o estado
+do pagamento poderá ser feito através desse endpoint de consulta:
+
+```url
+GET localhost:8080/lanchonete/v1/pagamento
+{
+    "idPedido": {ID_PEDIDO},
+    "tipoPagamento": "MERCADO_PAGO"
+}
+```
 
 ## Cadastro de produdos
+
+Para cadastrar os produtos basta usar o serviço:
+
+```url
+localhost:8080/lanchonete/v1/pedidos
+{
+    "nome": "Nugets",
+    "descricao": "10 Nugets de frango",
+    "categoria": "ACOMPANHAMENTO",
+"preco": 12.00
+}
+```
 
 Para termos produtos disponiveis para fazer os pedido é preciso adicionar usando o endpoint:
 

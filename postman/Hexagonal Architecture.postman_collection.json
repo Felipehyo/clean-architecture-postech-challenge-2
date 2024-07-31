@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "81f63ac2-c82f-446a-9b0a-75939ff2447b",
+		"_postman_id": "24d1464f-7cde-4442-8a9c-5aec6310599f",
 		"name": "Hexagonal Architecture",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "22525842"
+		"_exporter_id": "21995082"
 	},
 	"item": [
 		{
@@ -377,6 +377,107 @@
 								"v1",
 								"pedidos",
 								"35"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "pagamento",
+			"item": [
+				{
+					"name": "consultar pagamento",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"idPedido\": 1,\n    \"tipoPagamento\": \"MERCADO_PAGO\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/lanchonete/v1/pagamento",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"lanchonete",
+								"v1",
+								"pagamento"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cria pagamento",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"idPedido\": 1,\n    \"tipoPagamento\": \"MERCADO_PAGO\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/lanchonete/v1/pagamento",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"lanchonete",
+								"v1",
+								"pagamento"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Notificação (webhook fake)",
+			"item": [
+				{
+					"name": "envia notificação de pagamento",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"action\": \"payment.updated\",\n    \"data_created\": \"2024-07-29T10:00:00\",\n    \"data\": {\n        \"id\": \"8369909833\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/lanchonete/v1/notificacoes/mercadopago",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"lanchonete",
+								"v1",
+								"notificacoes",
+								"mercadopago"
 							]
 						}
 					},
